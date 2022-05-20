@@ -230,3 +230,7 @@ DerivedData
 .update-config
 
 Contrib/**/
+
+#config for database
+StudentAndTeachers/src/utils/config.properties
+
