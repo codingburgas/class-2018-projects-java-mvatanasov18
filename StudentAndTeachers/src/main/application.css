@@ -1,1 +1,11 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.root{
+	-fx-background-color: #C8F8FF;
+}
+
+#welcome{
+	-fx-font-size:33;
+	-fx-alignment:center;
+	
+}
