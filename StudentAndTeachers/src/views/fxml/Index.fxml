@@ -6,13 +6,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SceneController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
         <items>
-          <Button mnemonicParsing="false" text="Home" />
-            <Button mnemonicParsing="false" onAction="#logIn" text="Log in" />
-            <Button mnemonicParsing="false" onAction="#register" text="Register" />
+          <Button mnemonicParsing="false" text="Home">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#logIn" text="Log in">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#register" text="Register">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
         </items>
       </ToolBar>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="613.0" text=" " textAlignment="CENTER">

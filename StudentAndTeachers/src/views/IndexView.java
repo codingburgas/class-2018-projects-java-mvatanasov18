@@ -8,12 +8,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Index {
+public class IndexView {
 	
 	
 	
 	
-	public Index(Stage stage) {
+	public IndexView(Stage stage) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("fxml/Index.fxml"));
 			

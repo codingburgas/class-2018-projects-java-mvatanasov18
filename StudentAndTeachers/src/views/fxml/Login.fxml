@@ -10,14 +10,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SceneController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
         <items>
-          <Button mnemonicParsing="false" onAction="#home" text="Home" />
-            <Button mnemonicParsing="false" text="Log in" />
-            <Button mnemonicParsing="false" onAction="#register" text="Register" />
+          <Button mnemonicParsing="false" onAction="#home" text="Home">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" text="Log in">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#register" text="Register">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
         </items>
       </ToolBar>
       <Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" prefHeight="56.0" prefWidth="600.0" textAlignment="CENTER" />
@@ -57,7 +65,7 @@
       </HBox>
       <AnchorPane maxHeight="39.0" maxWidth="595.0" minHeight="4.0" minWidth="568.0" prefHeight="38.0" prefWidth="568.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="477.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="104.0" text="Submit" AnchorPane.rightAnchor="14.0">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="477.0" mnemonicParsing="false" onAction="#submit" prefHeight="39.0" prefWidth="104.0" text="Submit" AnchorPane.rightAnchor="14.0">
                <font>
                   <Font size="18.0" />
                </font>

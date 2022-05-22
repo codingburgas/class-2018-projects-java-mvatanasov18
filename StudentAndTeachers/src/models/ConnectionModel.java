@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
@@ -19,7 +20,7 @@ public class ConnectionModel {
 			
 			Path currentDir = Paths.get("StudentAndTeachers");
 			String pathToConfig=currentDir.toAbsolutePath()+"\\src\\utils\\config.properties";
-			System.out.println(pathToConfig);
+			//System.out.println(pathToConfig);
 			
 			InputStream input = new FileInputStream(pathToConfig);
 
@@ -52,6 +53,10 @@ public class ConnectionModel {
 
 	public Statement createStatement() throws SQLException {
 		return connection.createStatement();
+	}
+	
+	public PreparedStatement createPrepareStatement(String query) throws SQLException {
+		return connection.prepareStatement(query);
 	}
 
 	public void closeConnection() throws SQLException {

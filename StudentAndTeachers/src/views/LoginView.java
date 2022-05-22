@@ -8,9 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Login {
+public class LoginView {
 
-	public Login(Stage stage){
+	public LoginView(Stage stage){
 		
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("fxml/Login.fxml"));

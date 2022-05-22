@@ -1,9 +1,9 @@
 package main;
 	
-import controllers.SceneController;
+import controllers.HomeController;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import views.Index;
+import views.IndexView;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
@@ -14,7 +14,7 @@ public class Main extends Application {
 		try {	
 			System.out.println("Start");
 			
-			Index mainWindow=new Index(primaryStage);
+			IndexView mainWindow=new IndexView(primaryStage);
 			
 			
 			
