@@ -29,7 +29,7 @@ public class Query {
 
 	}
 
-	public static String findUserByUsername(String username) {
+	public static String findDuplicateUsername(String username) {
 		try {
 
 			ConnectionModel model = new ConnectionModel();
@@ -40,7 +40,7 @@ public class Query {
 			ps.setString(1, username);
 
 			ResultSet resultSet = ps.executeQuery();
-			String user="";
+			String user = "";
 			while (resultSet.next()) {
 				user = resultSet.getNString(1);
 			}
@@ -74,10 +74,22 @@ public class Query {
 			ps.setString(4, password);
 			ps.setString(5, address);
 
-			ps.executeUpdate();
-			int rows = ps.getUpdateCount();
+			int rows = ps.executeUpdate();
+
+			System.out.println("Affected Arows: " + rows);
+
+			query = "SELECT userId,username FROM Users WHERE username=?;";
+
+			ps = model.createPrepareStatement(query);
+			ps.setString(1, username);
+
+			ResultSet resultSet = ps.executeQuery();
+			resultSet.next();
+			int id = resultSet.getInt(1);
+
 			model.closeConnection();
-			return rows;
+			System.out.println(id);
+			return id;
 
 		} catch (Exception e) {
 
@@ -86,6 +98,31 @@ public class Query {
 		}
 
 		return 0;
+	}
+
+	public static void insertPrincipal(int userId, String schoolName) {
+
+		try {
+			ConnectionModel model = new ConnectionModel();
+
+			String query = "INSERT INTO Principals(schoolName,isVerified,userId) " + "VALUES(?,0,?);";
+			PreparedStatement ps = model.createPrepareStatement(query);
+
+			ps.setString(1, schoolName);
+			ps.setInt(2, userId);
+
+			int rows = ps.executeUpdate();
+
+			System.out.println("Affected rows: " + rows);
+
+			model.closeConnection();
+
+		} catch (Exception e) {
+			System.out.println("chupq se ");
+			e.printStackTrace();
+
+		}
+
 	}
 
 }

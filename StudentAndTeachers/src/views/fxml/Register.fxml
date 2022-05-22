@@ -31,7 +31,7 @@
             </Button>
         </items>
       </ToolBar>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="600.0" text="Register" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="600.0" text="Headmaster registration form" textAlignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>
@@ -49,7 +49,12 @@
                   <Font size="20.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="116.0" text="Password:">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="90.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="120.0" text="Password:">
                <font>
                   <Font size="20.0" />
                </font>
@@ -60,7 +65,7 @@
                </font>
             </PasswordField>
          </children></HBox>
-      <AnchorPane maxHeight="2.0" maxWidth="400.0" minHeight="0.0" minWidth="400.0" prefHeight="8.0" prefWidth="400.0" style="-fx-background-color: #77b4bd;" />
+      <AnchorPane maxHeight="2.0" maxWidth="400.0" minHeight="2.0" minWidth="400.0" prefHeight="2.0" prefWidth="400.0" style="-fx-background-color: #77b4bd;" />
       <HBox alignment="CENTER" prefHeight="92.0" prefWidth="862.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="116.0" text="First name:">
@@ -73,12 +78,12 @@
                   <Font size="20.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="43.0">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="90.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="116.0" text="Last name:">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="122.0" text="Last name:">
                <font>
                   <Font size="20.0" />
                </font>
@@ -90,7 +95,7 @@
             </TextField>
          </children>
       </HBox>
-      <AnchorPane maxHeight="2.0" maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="8.0" prefWidth="200.0" style="-fx-background-color: #77b4bd;" />
+      <AnchorPane maxHeight="2.0" maxWidth="200.0" minHeight="2.0" minWidth="200.0" prefHeight="2.0" prefWidth="200.0" style="-fx-background-color: #77b4bd;" />
       <HBox alignment="CENTER" prefHeight="79.0" prefWidth="862.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="116.0" text="Address:">
@@ -103,7 +108,7 @@
                   <Font size="20.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="22.0">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="29.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -118,6 +123,36 @@
                   <Font size="20.0" />
                </font>
             </PasswordField>
+         </children>
+      </HBox>
+      <AnchorPane maxHeight="2.0" maxWidth="80.0" minHeight="2.0" minWidth="80.0" prefHeight="2.0" prefWidth="80.0" style="-fx-background-color: #77b4bd;" />
+      <HBox alignment="CENTER" prefHeight="79.0" prefWidth="862.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="116.0" text="Phone:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="phone">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="22.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="183.0" text="School name:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="schoolName">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
          </children>
       </HBox>
       <AnchorPane maxHeight="117.0" maxWidth="770.0" minHeight="71.0" minWidth="698.0" prefHeight="117.0" prefWidth="770.0">

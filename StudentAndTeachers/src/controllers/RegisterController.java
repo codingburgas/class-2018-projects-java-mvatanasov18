@@ -26,6 +26,10 @@ public class RegisterController implements ActionController{
 	@FXML
 	private PasswordField confirmPassword;
 	@FXML
+	private TextField phone;
+	@FXML
+	private TextField schoolName;
+	@FXML
 	private Label errorBlock;
 	
 	@Override
@@ -58,12 +62,16 @@ public class RegisterController implements ActionController{
 		String tempLastName=lastName.getText().toString();
 		String tempAddress=address.getText().toString();
 		String tempConfirmPassword=confirmPassword.getText().toString();
+		String tempPhone=phone.getText().toString();
+		String tempSchoolName=schoolName.getText().toString();
 		
 		RegisterModel rm=new RegisterModel(tempUsername,tempPassword,
-				tempFirstName,tempLastName,tempAddress,tempConfirmPassword);
+				tempFirstName,tempLastName,tempAddress,tempConfirmPassword
+				,tempPhone,tempSchoolName);
 		
 		
 		errorBlock.setText(rm.checkRegister());
+		
 		
 	}
 

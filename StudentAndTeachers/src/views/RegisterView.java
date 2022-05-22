@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class RegisterView {
 	public RegisterView (Stage stage){
-		System.out.println("In register");
+		//System.out.println("In register");
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("fxml/Register.fxml"));
 			
