@@ -40,7 +40,7 @@ public class RegisterModel {
 		}
 
 		if (isUsernameUnique()) {
-			int id = Query.insertUser(username, password, firstName, lastName, address);
+			int id = Query.insertUser(username, password, firstName, lastName, address,phone);
 
 			Query.insertPrincipal(id, schoolName);
 			return "all Ok";

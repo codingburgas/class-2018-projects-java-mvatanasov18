@@ -1,17 +1,22 @@
 package controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import models.Query;
 import views.IndexView;
 import views.LoginView;
 import views.RegisterView;
 
 public class HomeController implements ActionController {
+	@FXML
+	private Label welcome;
 
+	public void setText(String text) {
+		welcome.setText("Welcome "+text);
+	}
+	
 	public void displayUpcomingTasks(ActionEvent event) {
 		System.out.println("displayUpcomingTasks");
 	}

@@ -29,7 +29,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="613.0" text="Welcome" textAlignment="CENTER">
+      <Label fx:id="welcome" alignment="BOTTOM_CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="613.0" text="Welcome" textAlignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>

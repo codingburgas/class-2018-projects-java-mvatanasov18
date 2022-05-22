@@ -37,12 +37,12 @@
       <AnchorPane maxHeight="4.0" maxWidth="595.0" minHeight="4.0" minWidth="595.0" prefHeight="4.0" prefWidth="595.0" style="-fx-background-color: #77b4bd;" />
       <HBox alignment="BOTTOM_CENTER" prefHeight="127.0" prefWidth="631.0">
          <children>
-            <Label contentDisplay="CENTER" prefHeight="44.0" prefWidth="178.0" text="username/email:" textAlignment="CENTER">
+            <Label contentDisplay="CENTER" prefHeight="44.0" prefWidth="121.0" text="username:" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField prefHeight="44.0" prefWidth="384.0">
+            <TextField fx:id="username" prefHeight="44.0" prefWidth="384.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -51,12 +51,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="113.0" prefWidth="631.0">
          <children>
-            <Label contentDisplay="CENTER" prefHeight="100.0" prefWidth="178.0" text="password:" textAlignment="CENTER">
+            <Label contentDisplay="CENTER" prefHeight="100.0" prefWidth="122.0" text="password:" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <PasswordField prefHeight="44.0" prefWidth="384.0">
+            <PasswordField fx:id="password" prefHeight="44.0" prefWidth="384.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -70,6 +70,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <Label fx:id="errorMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="-6.0" prefHeight="38.0" prefWidth="141.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

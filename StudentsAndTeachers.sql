@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [StudentsAndTeachers]    Script Date: 5/18/2022 6:20:45 PM ******/
+/****** Object:  Database [StudentsAndTeachers]    Script Date: 5/23/2022 1:01:40 AM ******/
 CREATE DATABASE [StudentsAndTeachers]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,10 +80,10 @@ ALTER DATABASE [StudentsAndTeachers] SET QUERY_STORE = OFF
 GO
 USE [StudentsAndTeachers]
 GO
-/****** Object:  User [hui]    Script Date: 5/18/2022 6:20:45 PM ******/
+/****** Object:  User [hui]    Script Date: 5/23/2022 1:01:40 AM ******/
 CREATE USER [hui] FOR LOGIN [JSUser] WITH DEFAULT_SCHEMA=[db_owner]
 GO
-/****** Object:  Table [dbo].[Principals]    Script Date: 5/18/2022 6:20:45 PM ******/
+/****** Object:  Table [dbo].[Principals]    Script Date: 5/23/2022 1:01:40 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -99,7 +99,7 @@ CREATE TABLE [dbo].[Principals](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Projects]    Script Date: 5/18/2022 6:20:45 PM ******/
+/****** Object:  Table [dbo].[Projects]    Script Date: 5/23/2022 1:01:40 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -116,7 +116,7 @@ CREATE TABLE [dbo].[Projects](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Students]    Script Date: 5/18/2022 6:20:45 PM ******/
+/****** Object:  Table [dbo].[Students]    Script Date: 5/23/2022 1:01:40 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -133,7 +133,7 @@ CREATE TABLE [dbo].[Students](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Students-Teams]    Script Date: 5/18/2022 6:20:45 PM ******/
+/****** Object:  Table [dbo].[Students-Teams]    Script Date: 5/23/2022 1:01:40 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -143,7 +143,7 @@ CREATE TABLE [dbo].[Students-Teams](
 	[teamId] [int] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Tasks]    Script Date: 5/18/2022 6:20:45 PM ******/
+/****** Object:  Table [dbo].[Tasks]    Script Date: 5/23/2022 1:01:40 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -161,7 +161,7 @@ CREATE TABLE [dbo].[Tasks](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Teachers]    Script Date: 5/18/2022 6:20:45 PM ******/
+/****** Object:  Table [dbo].[Teachers]    Script Date: 5/23/2022 1:01:40 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -176,7 +176,7 @@ CREATE TABLE [dbo].[Teachers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Teams]    Script Date: 5/18/2022 6:20:45 PM ******/
+/****** Object:  Table [dbo].[Teams]    Script Date: 5/23/2022 1:01:40 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -190,7 +190,7 @@ CREATE TABLE [dbo].[Teams](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Teams-Projects]    Script Date: 5/18/2022 6:20:45 PM ******/
+/****** Object:  Table [dbo].[Teams-Projects]    Script Date: 5/23/2022 1:01:40 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -200,14 +200,14 @@ CREATE TABLE [dbo].[Teams-Projects](
 	[projectId] [int] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 5/18/2022 6:20:45 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 5/23/2022 1:01:40 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Users](
-	[username] [nvarchar](255) NOT NULL,
 	[userId] [int] IDENTITY(1,1) NOT NULL,
+	[username] [nvarchar](255) NOT NULL,
 	[firstName] [nvarchar](255) NOT NULL,
 	[lastName] [nvarchar](255) NOT NULL,
 	[password] [varbinary](max) NOT NULL,
@@ -216,6 +216,10 @@ CREATE TABLE [dbo].[Users](
  CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
 (
 	[userId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+ CONSTRAINT [UK_Users] UNIQUE NONCLUSTERED 
+(
+	[username] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
@@ -275,6 +279,128 @@ GO
 ALTER TABLE [dbo].[Tasks]  WITH CHECK ADD  CONSTRAINT [CK_dueDate] CHECK  (([dueDate]>=getdate()))
 GO
 ALTER TABLE [dbo].[Tasks] CHECK CONSTRAINT [CK_dueDate]
+GO
+/****** Object:  StoredProcedure [dbo].[insertStudent]    Script Date: 5/23/2022 1:01:40 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<poznai ot 3-tiq put>
+-- Create date: <po-kusno no pak dnes>
+-- Description:	<veche e tumno i ne sum ql>
+-- =============================================
+CREATE PROCEDURE [dbo].[insertStudent]
+	@parentPhone varchar(50),
+	@parentAddress nvarchar(255),
+	@parentEmail varchar(255),
+	@userId int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	INSERT INTO Students(parentPhone,parentAddress,parentEmail,userId)
+	VALUES(CONVERT(varbinary(max),EncryptByPassPhrase('hui',@parentPhone),2),
+	CONVERT(varbinary(max),EncryptByPassPhrase('hui',@parentAddress),2),
+	CONVERT(varbinary(max),EncryptByPassPhrase('hui',@parentEmail),2),
+	@userId)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[insertTeacher]    Script Date: 5/23/2022 1:01:40 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<poznai ot 3-tiq put>
+-- Create date: <po-kusno no pak dnes>
+-- Description:	<veche e tumno i ne sum ql>
+-- =============================================
+CREATE PROCEDURE [dbo].[insertTeacher]
+	@subjectName nvarchar(255),
+	@userId int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	INSERT INTO Teachers(subjectName,userId)
+	VALUES(@subjectName,@userId)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[insertUser]    Script Date: 5/23/2022 1:01:40 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Martin Atanasov>
+-- Create date: <dnes>
+-- Description:	<nz kvo pravq navun e slunchevo a az pisha kod>
+-- =============================================
+Create PROCEDURE [dbo].[insertUser]
+	@Username nvarchar(255),
+	@FirstName nvarchar(255),
+	@LastName nvarchar(255),
+	@Password nvarchar(255),
+	@Address nvarchar(255),
+	@Phone varchar(50)
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+	INSERT INTO Users(username,firstName,lastName,password,address,phone)
+	VALUES(@Username,@FirstName,@LastName, CONVERT(varbinary(max),EncryptByPassPhrase('hui',@Password)   ,2),
+	CONVERT(varbinary(max),EncryptByPassPhrase('hui',@Address)   ,2), @Phone);
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[returnPassword]    Script Date: 5/23/2022 1:01:40 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<pak az>
+-- Create date: <pak dnes>
+-- Description:	<sushtoto>
+-- =============================================
+CREATE PROCEDURE  [dbo].[returnPassword]
+	@username nvarchar(255)
+
+AS
+BEGIN
+	SELECT username,CONVERT(nvarchar(max),DecryptByPassPhrase('hui',password)) as password
+	FROM Users
+	WHERE username=@username;
+END
+GO
+/****** Object:  StoredProcedure [dbo].[returnStudentData]    Script Date: 5/23/2022 1:01:40 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<poznai ot 3-tiq put>
+-- Create date: <po-kusno no pak dnes>
+-- Description:	<veche e tumno i ne sum ql>
+-- =============================================
+CREATE PROCEDURE [dbo].[returnStudentData]
+@userId int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SELECT [studentId]
+      ,CONVERT(varchar(max),DecryptByPassPhrase('hui',[parentPhone])) as [parentPhone]    
+      ,CONVERT(nvarchar(max),DecryptByPassPhrase('hui',[parentAddress])) as [parentAddress]     
+      ,CONVERT(varchar(max),DecryptByPassPhrase('hui',[parentEmail])) as [parentEmail]   
+      ,[userId]
+  FROM [StudentsAndTeachers].[dbo].[Students]
+  WHERE userId=@userId
+END
 GO
 USE [master]
 GO

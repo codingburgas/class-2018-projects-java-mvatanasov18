@@ -38,7 +38,7 @@ public class ConnectionModel {
 
 			System.out.println("connecting.. ");
 			connection = DriverManager.getConnection(connectionUrl);
-			System.out.println("connected. marti is happy");
+			System.out.println("Connected. Martincho is happy");
 
 		}
 		// Handle any errors that may have occurred.

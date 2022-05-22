@@ -69,9 +69,14 @@ public class RegisterController implements ActionController{
 				tempFirstName,tempLastName,tempAddress,tempConfirmPassword
 				,tempPhone,tempSchoolName);
 		
+		String message=rm.checkRegister();
+		errorBlock.setText(message);
 		
-		errorBlock.setText(rm.checkRegister());
 		
+		if(message.equals("all Ok")) {
+			
+			LoginView login = new LoginView((Stage) ((Node) event.getSource()).getScene().getWindow());
+		}
 		
 	}
 
