@@ -13,7 +13,7 @@ public class LoginView {
 	public LoginView(Stage stage){
 		
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("fxml/Login.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/resources/Login.fxml"));
 			
 			stage.setTitle("Students and Teachers");
 			

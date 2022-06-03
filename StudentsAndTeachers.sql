@@ -307,7 +307,6 @@ BEGIN
 	@userId)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[insertTeacher]    Script Date: 5/23/2022 1:01:40 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

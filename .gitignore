@@ -232,5 +232,5 @@ DerivedData
 Contrib/**/
 
 #config for database
-StudentAndTeachers/src/utils/config.properties
+StudentAndTeachers/src/resources/config.properties
 

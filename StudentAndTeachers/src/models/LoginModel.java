@@ -18,6 +18,11 @@ public class LoginModel {
 	}
 	
 	public String[] checkLogin() {
+		if(username.isBlank() || password.isBlank()) {
+			return new String[]{"tupanar",""};
+		}
+		
+		
 		if(doesUserExist()) {
 			if(checkPassword()) {
 				System.out.println("Login was successful");

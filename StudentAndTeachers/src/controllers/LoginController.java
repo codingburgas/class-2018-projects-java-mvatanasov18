@@ -51,8 +51,12 @@ public class LoginController implements ActionController{
 		LoginModel lm=new LoginModel(tempUsername,tempPassword);
 		String[] message=lm.checkLogin();
 		if(message[0].equals("student") || message[0].equals("teacher")|| message[0].equals("principal")) {
-			IndexView home = new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow(),message[1]);
+			Session.isLoggedIn=true;
+			Session.name=message[1];
+			IndexView home = new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
 			System.out.println("tuk sum");
+			
+			
 		}
 		errorMessage.setText(message[0]+message[1]);
 		

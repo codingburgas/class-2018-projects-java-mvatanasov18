@@ -19,7 +19,7 @@ public class ConnectionModel {
 		try {
 			
 			Path currentDir = Paths.get("StudentAndTeachers");
-			String pathToConfig=currentDir.toAbsolutePath()+"\\src\\utils\\config.properties";
+			String pathToConfig=currentDir.toAbsolutePath()+"\\src\\resources\\config.properties";
 			//System.out.println(pathToConfig);
 			
 			InputStream input = new FileInputStream(pathToConfig);

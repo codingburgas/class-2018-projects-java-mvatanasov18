@@ -12,7 +12,7 @@ public class RegisterView {
 	public RegisterView (Stage stage){
 		//System.out.println("In register");
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("fxml/Register.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/resources/Register.fxml"));
 			
 			stage.setTitle("Students and Teachers");
 			
