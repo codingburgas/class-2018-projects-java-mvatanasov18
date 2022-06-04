@@ -37,6 +37,7 @@ public class ConnectionModel {
 					+ ";password=" + password;
 
 			System.out.println("connecting.. ");
+			System.out.println(connectionUrl);
 			connection = DriverManager.getConnection(connectionUrl);
 			System.out.println("Connected. Martincho is happy");
 

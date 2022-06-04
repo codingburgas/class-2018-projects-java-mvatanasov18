@@ -2,10 +2,11 @@
 
 .root{
 	-fx-background-color: #C8F8FF;
+	-fx-font-size:14;
 }
 
 #welcome{
-	-fx-font-size:33;
+	
 	-fx-alignment:center;
 	
 }

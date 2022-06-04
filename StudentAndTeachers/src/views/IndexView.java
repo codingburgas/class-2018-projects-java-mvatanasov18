@@ -28,6 +28,7 @@ public class IndexView {
 					System.out.println(Session.name);
 
 					hc.setText(", "+ Session.name);
+					hc.addButton("Calendar");
 				}
 			} catch (Exception e) {
 				// System.out.println("user is null");
