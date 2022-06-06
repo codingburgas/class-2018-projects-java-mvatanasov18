@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CalendarController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddController">
    <children>
       <ToolBar fx:id="navbar" prefHeight="40.0" prefWidth="200.0">
         <items>
@@ -24,7 +24,7 @@
                </font></Button>
         </items>
       </ToolBar>
-     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="613.0" text="Calendar" textAlignment="CENTER">
+     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="613.0" text="Add" textAlignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>

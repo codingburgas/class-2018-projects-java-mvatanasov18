@@ -3,30 +3,28 @@ package views;
 import java.io.IOException;
 
 import animatefx.animation.FadeIn;
-import controllers.ActionController;
-import controllers.CalendarController;
+import controllers.AddController;
 import controllers.Session;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class CalendarView  extends Navbar{
+public class AddView  extends Navbar{
 
-private CalendarController cc;
-	public CalendarView(Stage stage){
+private AddController ac;
+	public AddView(Stage stage){
 		
 		try {
 			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/Calendar.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/Add.fxml"));
 			
 			Parent root = loader.load();
 			
-			cc=loader.getController();
+			ac=loader.getController();
 			
 			if (Session.name != "") {
-				setNavbarOptionsBySessionRole(cc.getNavbar(),"calendar");
+				setNavbarOptionsBySessionRole(ac.getNavbar(),"add");
 
 			}
 			

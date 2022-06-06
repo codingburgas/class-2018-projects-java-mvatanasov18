@@ -9,7 +9,7 @@ import views.IndexView;
 import views.LoginView;
 import views.RegisterView;
 
-public class CalendarController implements ActionController {
+public class AddController implements ActionController {
 
 	
 	@FXML
@@ -31,7 +31,7 @@ public class CalendarController implements ActionController {
 	@Override
 	public void logIn(ActionEvent event) {
 		System.out.println("logIn");
-		new LoginView((Stage) ((Node) event.getSource()).getScene().getWindow());
+        new LoginView((Stage) ((Node) event.getSource()).getScene().getWindow());
 		
 	}
 
@@ -40,4 +40,6 @@ public class CalendarController implements ActionController {
 		System.out.println("Register");
 		new RegisterView((Stage) ((Node) event.getSource()).getScene().getWindow());
 	}
+	
+	
 }

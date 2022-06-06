@@ -25,7 +25,7 @@ private LoginController lc;
 			if (Session.name != "") {
 				System.out.println(Session.name);
 
-				setNavbarOptionsBySessionRole(lc.getNavbar());
+				setNavbarOptionsBySessionRole(lc.getNavbar(),"login");
 
 			}
 			

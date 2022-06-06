@@ -35,7 +35,7 @@ public class RegisterController implements ActionController{
 	@Override
 	public void home(ActionEvent event) {
 		System.out.println("Home");
-		IndexView home = new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
+		new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
 
 		
 	}
@@ -43,7 +43,7 @@ public class RegisterController implements ActionController{
 	@Override
 	public void logIn(ActionEvent event) {
 		System.out.println("logIn");
-		LoginView login = new LoginView((Stage) ((Node) event.getSource()).getScene().getWindow());
+		 new LoginView((Stage) ((Node) event.getSource()).getScene().getWindow());
 		
 	}
 

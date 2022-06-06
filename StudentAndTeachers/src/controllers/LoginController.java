@@ -31,21 +31,21 @@ public class LoginController implements ActionController{
 	@Override
 	public void home(ActionEvent event) {
 		System.out.println("Home");
-		IndexView home = new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
+		 new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
 		
 	}
 
 	@Override
 	public void logIn(ActionEvent event) {
 		System.out.println("logIn");
-		LoginView login = new LoginView((Stage) ((Node) event.getSource()).getScene().getWindow());
+		 new LoginView((Stage) ((Node) event.getSource()).getScene().getWindow());
 		
 	}
 
 	@Override
 	public void register(ActionEvent event) {
 		System.out.println("Register");
-		RegisterView login = new RegisterView((Stage) ((Node) event.getSource()).getScene().getWindow());
+		 new RegisterView((Stage) ((Node) event.getSource()).getScene().getWindow());
 	}
 	
 	
@@ -64,7 +64,7 @@ public class LoginController implements ActionController{
 			Session.isLoggedIn=true;
 			Session.name=message[1];
 			Session.role=message[0];
-			IndexView home = new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
+			new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
 			System.out.println("tuk sum");
 			
 			

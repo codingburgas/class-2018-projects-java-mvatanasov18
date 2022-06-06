@@ -26,11 +26,11 @@ public class IndexView extends Navbar {
 			stage.setTitle("Students and Teachers");
 
 			if (Session.name != "") {
-				System.out.println(Session.name);
-
+				
+				
 				hc.setText(", " + Session.name);
-				setNavbarOptionsBySessionRole(hc.getNavbar());
-
+				setNavbarOptionsBySessionRole(hc.getNavbar(),"home");
+				
 			}
 
 			Scene scene = new Scene(root);
