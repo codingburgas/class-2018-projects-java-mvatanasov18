@@ -46,14 +46,30 @@ public class Navbar {
 				});
 			}
 		}
-		if (name.equalsIgnoreCase("viewTasks")) {
+		if (name.equalsIgnoreCase("View tasks")) {
 			if (!child.equalsIgnoreCase(name)) {
-			
+				btn.setOnAction(new EventHandler() {
+
+					@Override
+					public void handle(Event event) {
+
+						TasksView add = new TasksView((Stage) ((Node) event.getSource()).getScene().getWindow());
+
+					}
+				});
 			}
 		}
 		if (name.equalsIgnoreCase("teams")) {
 			if (!child.equalsIgnoreCase(name)) {
-				
+				btn.setOnAction(new EventHandler() {
+
+					@Override
+					public void handle(Event event) {
+
+						TeamsView add = new TeamsView((Stage) ((Node) event.getSource()).getScene().getWindow());
+
+					}
+				});
 			}
 			
 		}
@@ -62,7 +78,6 @@ public class Navbar {
 	}
 
 	public void setNavbarOptionsBySessionRole(ToolBar navbar, String child) {
-		System.out.println("na maika ti putkata");
 		if (Session.role.equals("principal")) {
 			this.child = child;
 
