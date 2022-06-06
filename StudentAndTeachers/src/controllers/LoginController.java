@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 import models.LoginModel;
 import views.IndexView;
@@ -21,6 +22,12 @@ public class LoginController implements ActionController{
 	private Label errorMessage;
 	@FXML
 	private Label welcome;
+	@FXML
+	private ToolBar navbar;
+	public ToolBar getNavbar() {
+		return navbar;
+	}
+	
 	@Override
 	public void home(ActionEvent event) {
 		System.out.println("Home");
@@ -50,9 +57,13 @@ public class LoginController implements ActionController{
 		
 		LoginModel lm=new LoginModel(tempUsername,tempPassword);
 		String[] message=lm.checkLogin();
-		if(message[0].equals("student") || message[0].equals("teacher")|| message[0].equals("principal")) {
+		if(message[0].equals("student") ||
+				message[0].equals("teacher")||
+				message[0].equals("principal")) {
+			
 			Session.isLoggedIn=true;
 			Session.name=message[1];
+			Session.role=message[0];
 			IndexView home = new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
 			System.out.println("tuk sum");
 			

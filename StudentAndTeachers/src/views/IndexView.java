@@ -13,7 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class IndexView {
+public class IndexView extends Navbar {
+	private HomeController hc;
 
 	public IndexView(Stage stage) {
 		try {
@@ -21,19 +22,17 @@ public class IndexView {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/Index.fxml"));
 
 			Parent root = loader.load();
-			HomeController hc = loader.getController();
+			hc = loader.getController();
 			stage.setTitle("Students and Teachers");
-			try {
-				if (Session.name != "") {
-					System.out.println(Session.name);
 
-					hc.setText(", "+ Session.name);
-					hc.addButton("Calendar");
-				}
-			} catch (Exception e) {
-				// System.out.println("user is null");
-				e.printStackTrace();
+			if (Session.name != "") {
+				System.out.println(Session.name);
+
+				hc.setText(", " + Session.name);
+				setNavbarOptionsBySessionRole(hc.getNavbar());
+
 			}
+
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/main/application.css").toExternalForm());
 
@@ -46,4 +45,5 @@ public class IndexView {
 			e.printStackTrace();
 		}
 	}
+
 }

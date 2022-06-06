@@ -4,19 +4,33 @@ import java.io.IOException;
 
 import animatefx.animation.FadeIn;
 import controllers.ActionController;
+import controllers.CalendarController;
+import controllers.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class CalendarView {
+public class CalendarView  extends Navbar{
 
-
+private CalendarController cc;
 	public CalendarView(Stage stage){
 		
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/resources/Calendar.fxml"));
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/Calendar.fxml"));
+			
+			Parent root = loader.load();
+			
+			cc=loader.getController();
+			
+			if (Session.name != "") {
+				System.out.println(Session.name);
+
+				setNavbarOptionsBySessionRole(cc.getNavbar());
+
+			}
 			
 			stage.setTitle("Students and Teachers");
 			
@@ -36,4 +50,6 @@ public class CalendarView {
 		}
 		
 	}
+	
+	
 }
