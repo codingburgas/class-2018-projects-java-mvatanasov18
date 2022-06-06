@@ -25,7 +25,7 @@ public class Navbar {
 					@Override
 					public void handle(Event event) {
 
-						CalendarView calendar = new CalendarView(
+						 new CalendarView(
 								(Stage) ((Node) event.getSource()).getScene().getWindow());
 
 					}
@@ -40,7 +40,7 @@ public class Navbar {
 					@Override
 					public void handle(Event event) {
 
-						AddView add = new AddView((Stage) ((Node) event.getSource()).getScene().getWindow());
+						new AddView((Stage) ((Node) event.getSource()).getScene().getWindow());
 
 					}
 				});
@@ -53,7 +53,7 @@ public class Navbar {
 					@Override
 					public void handle(Event event) {
 
-						TasksView add = new TasksView((Stage) ((Node) event.getSource()).getScene().getWindow());
+						 new TasksView((Stage) ((Node) event.getSource()).getScene().getWindow());
 
 					}
 				});
@@ -66,7 +66,7 @@ public class Navbar {
 					@Override
 					public void handle(Event event) {
 
-						TeamsView add = new TeamsView((Stage) ((Node) event.getSource()).getScene().getWindow());
+						 new TeamsView((Stage) ((Node) event.getSource()).getScene().getWindow());
 
 					}
 				});
@@ -89,7 +89,7 @@ public class Navbar {
 			return;
 		}
 		if (Session.role.equals("teacher")) {
-
+			this.child = child;
 			addButton("Calendar", navbar);
 			addButton("View tasks", navbar);
 			addButton("Teams", navbar);
@@ -98,7 +98,7 @@ public class Navbar {
 		}
 
 		if (Session.role.equals("student")) {
-
+			this.child = child;
 			addButton("Calendar", navbar);
 			addButton("View tasks", navbar);
 			addButton("Teams", navbar);

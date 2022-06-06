@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegisterController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="736.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateStudentController">
    <children>
-      <ToolBar prefHeight="40.0"  fx:id="navbar" prefWidth="200.0">
+      <ToolBar fx:id="navbar" prefHeight="40.0" prefWidth="200.0">
         <items>
           <Button mnemonicParsing="false" onAction="#home" text="Home">
                <font>
@@ -31,7 +31,7 @@
             </Button>
         </items>
       </ToolBar>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="600.0" text="Headmaster registration form" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="600.0" text="Student registration form" textAlignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>
@@ -95,7 +95,7 @@
             </TextField>
          </children>
       </HBox>
-      <AnchorPane maxHeight="2.0" maxWidth="200.0" minHeight="2.0" minWidth="200.0" prefHeight="2.0" prefWidth="200.0" style="-fx-background-color: #77b4bd;" />
+      <AnchorPane maxHeight="2.0" maxWidth="266.0" minHeight="2.0" minWidth="200.0" prefHeight="2.0" prefWidth="266.0" style="-fx-background-color: #77b4bd;" />
       <HBox alignment="CENTER" prefHeight="79.0" prefWidth="862.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="116.0" text="Address:">
@@ -108,7 +108,7 @@
                   <Font size="20.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="29.0">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="34.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -125,7 +125,7 @@
             </PasswordField>
          </children>
       </HBox>
-      <AnchorPane maxHeight="2.0" maxWidth="80.0" minHeight="2.0" minWidth="80.0" prefHeight="2.0" prefWidth="80.0" style="-fx-background-color: #77b4bd;" />
+      <AnchorPane maxHeight="2.0" maxWidth="164.0" minHeight="2.0" minWidth="80.0" prefHeight="2.0" prefWidth="164.0" style="-fx-background-color: #77b4bd;" />
       <HBox alignment="CENTER" prefHeight="79.0" prefWidth="862.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="116.0" text="Phone:">
@@ -138,17 +138,47 @@
                   <Font size="20.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="22.0">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="32.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="183.0" text="School name:">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="177.0" text="Parent's email">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="schoolName">
+            <TextField fx:id="parentEmail">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <AnchorPane maxHeight="2.0" maxWidth="80.0" minHeight="2.0" minWidth="80.0" prefHeight="2.0" prefWidth="80.0" style="-fx-background-color: #77b4bd;" />
+      <HBox alignment="CENTER" prefHeight="79.0" prefWidth="862.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="143.0" text="Parent's Phone:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="parentPhone">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="8.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="177.0" text="Parent's address">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="parentAddress">
                <font>
                   <Font size="20.0" />
                </font>

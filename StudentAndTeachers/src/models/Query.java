@@ -59,6 +59,10 @@ public class Query {
 		return 0;
 	}
 
+	
+	
+	
+	/////////////////////     INSERT     ////////////////
 	public static int insertUser(String username, String password, String firstName, String lastName, String address,
 			String phone) {
 
@@ -123,6 +127,34 @@ public class Query {
 		}
 
 	}
+	public static void insertStudent(int userId, String parentPhone,String parentEmail,String parentAddress) {
+
+		try {
+			ConnectionModel model = new ConnectionModel();
+
+			String query = "EXEC insertStudent @parentPhone=? "
+					+ ", @parentAddress=? , @parentEmail=? , @userId=?  ";
+			PreparedStatement ps = model.createPrepareStatement(query);
+
+			ps.setString(1, parentPhone);
+			ps.setString(2, parentEmail);
+			ps.setString(3, parentAddress);
+			ps.setInt(4, userId);
+
+			int rows = ps.executeUpdate();
+
+			System.out.println("Affected rows: " + rows);
+
+			model.closeConnection();
+
+		} catch (Exception e) {
+			System.out.println("chupq se ");
+			e.printStackTrace();
+
+		}
+
+	}
+	
 
 	public static String selectPasswordByUsername(String username) {
 		try {
@@ -248,5 +280,6 @@ public class Query {
 		}
 		return "";
 	}
+	
 
 }
