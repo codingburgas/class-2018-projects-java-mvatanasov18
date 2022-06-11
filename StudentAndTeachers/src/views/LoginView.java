@@ -8,6 +8,7 @@ import controllers.Session;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 
 public class LoginView  extends Navbar{
@@ -22,11 +23,16 @@ private LoginController lc;
 			
 			lc=loader.getController();
 			
-			if (Session.name != "") {
-				System.out.println(Session.name);
-
-				setNavbarOptionsBySessionRole(lc.getNavbar(),"login");
-
+			Navbar n=new Navbar();
+			ToolBar tb=lc.getNavbar();
+			if (Session.name.equals("")) {
+				
+				
+				
+				
+				n.addButton("Home", tb);
+				n.addButton("Register", tb);
+				
 			}
 			
 			

@@ -9,7 +9,7 @@ import views.IndexView;
 import views.LoginView;
 import views.RegisterView;
 
-public class TasksController implements ActionController {
+public class TasksController  {
 
 	
 	@FXML
@@ -20,26 +20,7 @@ public class TasksController implements ActionController {
 	}
 	
 	
-	@Override
-	public void home(ActionEvent event) {
-		
-		System.out.println("Home");
-		new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
 
-	}
-
-	@Override
-	public void logIn(ActionEvent event) {
-		System.out.println("logIn");
-        new LoginView((Stage) ((Node) event.getSource()).getScene().getWindow());
-		
-	}
-
-	@Override
-	public void register(ActionEvent event) {
-		System.out.println("Register");
-		new RegisterView((Stage) ((Node) event.getSource()).getScene().getWindow());
-	}
 	
 	
 }

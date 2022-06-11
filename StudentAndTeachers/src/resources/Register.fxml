@@ -12,25 +12,7 @@
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegisterController">
    <children>
-      <ToolBar prefHeight="40.0"  fx:id="navbar" prefWidth="200.0">
-        <items>
-          <Button mnemonicParsing="false" onAction="#home" text="Home">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#logIn" text="Log in">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" text="Register">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-        </items>
-      </ToolBar>
+      <ToolBar fx:id="navbar" prefHeight="40.0" prefWidth="200.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="600.0" text="Headmaster registration form" textAlignment="CENTER">
          <font>
             <Font size="36.0" />

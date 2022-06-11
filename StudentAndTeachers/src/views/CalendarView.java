@@ -3,13 +3,13 @@ package views;
 import java.io.IOException;
 
 import animatefx.animation.FadeIn;
-import controllers.ActionController;
 import controllers.CalendarController;
 import controllers.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 
 public class CalendarView  extends Navbar{
@@ -25,9 +25,19 @@ private CalendarController cc;
 			
 			cc=loader.getController();
 			
-			if (Session.name != "") {
-				setNavbarOptionsBySessionRole(cc.getNavbar(),"calendar");
-
+			Navbar n=new Navbar();
+			ToolBar tb=cc.getNavbar();
+			 if( Session.role.equals("principal")) {
+				
+				n.addButton("Logout", tb);
+				n.addButton("Add", tb);
+				n.addButton("Teams", tb);
+				n.addButton("View Tasks", tb);
+			}else if( Session.role.equals("student") || Session.role.equals("teacher")) {
+				
+				n.addButton("Logout", tb);
+				n.addButton("Teams", tb);
+				n.addButton("View Tasks", tb);
 			}
 			
 			stage.setTitle("Students and Teachers");

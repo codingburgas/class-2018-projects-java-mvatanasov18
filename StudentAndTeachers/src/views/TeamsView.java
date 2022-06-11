@@ -9,6 +9,7 @@ import controllers.TeamsController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 
 public class TeamsView  extends Navbar{
@@ -24,10 +25,21 @@ private TeamsController tc;
 			
 			tc=loader.getController();
 			
-			if (Session.name != "") {
-				setNavbarOptionsBySessionRole(tc.getNavbar(),"teams");
-
+			Navbar n=new Navbar();
+			ToolBar tb=tc.getNavbar();
+			 if( Session.role.equals("principal")) {
+				
+				n.addButton("Logout", tb);
+				n.addButton("Add", tb);
+				n.addButton("View Tasks", tb);
+				n.addButton("Calendar", tb);
+			}else if( Session.role.equals("student") || Session.role.equals("teacher")) {
+				
+				n.addButton("Logout", tb);
+				n.addButton("View Tasks", tb);
+				n.addButton("Calendar", tb);
 			}
+			
 			
 			stage.setTitle("Students and Teachers");
 			

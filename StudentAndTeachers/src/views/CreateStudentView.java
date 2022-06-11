@@ -8,6 +8,7 @@ import controllers.Session;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 
 public class CreateStudentView  extends Navbar{
@@ -23,11 +24,16 @@ private CreateStudentController csc;
 			
 			csc=loader.getController();
 			
-			if (Session.name != "") {
-				setNavbarOptionsBySessionRole(csc.getNavbar(),"");
-
+			Navbar n=new Navbar();
+			ToolBar tb=csc.getNavbar();
+			if( Session.role.equals("principal")) {
+				
+				n.addButton("Logout", tb);
+				n.addButton("Add", tb);
+				n.addButton("Teams", tb);
+				n.addButton("View Tasks", tb);
+				n.addButton("Calendar", tb);
 			}
-			
 			stage.setTitle("Students and Teachers");
 			
 			

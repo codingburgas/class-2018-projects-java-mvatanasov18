@@ -6,12 +6,13 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 import models.RegisterModel;
 import views.IndexView;
 import views.LoginView;
 
-public class RegisterController implements ActionController{
+public class RegisterController {
 
 	@FXML
 	private TextField username;
@@ -31,27 +32,13 @@ public class RegisterController implements ActionController{
 	private TextField schoolName;
 	@FXML
 	private Label errorBlock;
+	@FXML
+	private ToolBar navbar;
 	
-	@Override
-	public void home(ActionEvent event) {
-		System.out.println("Home");
-		new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
-
-		
+	public ToolBar getNavbar() {
+		return navbar;
 	}
 
-	@Override
-	public void logIn(ActionEvent event) {
-		System.out.println("logIn");
-		 new LoginView((Stage) ((Node) event.getSource()).getScene().getWindow());
-		
-	}
-
-	@Override
-	public void register(ActionEvent event) {
-		System.out.println("register");	
-	}
-	
 	
 	public void submit(ActionEvent event) {
 		System.out.println("submit");

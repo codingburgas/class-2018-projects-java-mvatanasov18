@@ -9,6 +9,7 @@ import controllers.TasksController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 
 public class TasksView  extends Navbar{
@@ -24,10 +25,21 @@ private TasksController tc;
 			
 			tc=loader.getController();
 			
-			if (Session.name != "") {
-				setNavbarOptionsBySessionRole(tc.getNavbar(),"Tasks View");
-
+			Navbar n=new Navbar();
+			ToolBar tb=tc.getNavbar();
+ if( Session.role.equals("principal")) {
+				
+				n.addButton("Logout", tb);
+				n.addButton("Add", tb);
+				n.addButton("Teams", tb);
+				n.addButton("Calendar", tb);
+			}else if( Session.role.equals("student") || Session.role.equals("teacher")) {
+				
+				n.addButton("Logout", tb);
+				n.addButton("Teams", tb);
+				n.addButton("Calendar", tb);
 			}
+			
 			
 			stage.setTitle("Students and Teachers");
 			

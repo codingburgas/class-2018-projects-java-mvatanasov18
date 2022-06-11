@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 
 public class IndexView extends Navbar {
@@ -24,13 +25,32 @@ public class IndexView extends Navbar {
 			Parent root = loader.load();
 			hc = loader.getController();
 			stage.setTitle("Students and Teachers");
-
-			if (Session.name != "") {
+			Navbar n=new Navbar();
+			ToolBar tb=hc.getNavbar();
+			
+			System.out.println("role: "+Session.role);
+			
+			if (Session.name.equals("")) {
 				
 				
+				
+				
+				n.addButton("Login", tb);
+				n.addButton("Register", tb);
+				
+			}else if( Session.role.equals("principal")) {
 				hc.setText(", " + Session.name);
-				setNavbarOptionsBySessionRole(hc.getNavbar(),"home");
-				
+				n.addButton("Logout", tb);
+				n.addButton("Add", tb);
+				n.addButton("Teams", tb);
+				n.addButton("View Tasks", tb);
+				n.addButton("Calendar", tb);
+			}else if( Session.role.equals("student") || Session.role.equals("teacher")) {
+				hc.setText(", " + Session.name);
+				n.addButton("Logout", tb);
+				n.addButton("Teams", tb);
+				n.addButton("View Tasks", tb);
+				n.addButton("Calendar", tb);
 			}
 
 			Scene scene = new Scene(root);
