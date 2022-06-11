@@ -19,7 +19,7 @@ public class LoginModel {
 	
 	public String[] checkLogin() {
 		if(username.isBlank() || password.isBlank()) {
-			return new String[]{"tupanar",""};
+			return new String[]{"Enter data",""};
 		}
 		
 		
@@ -27,7 +27,7 @@ public class LoginModel {
 			if(checkPassword()) {
 				System.out.println("Login was successful");
 				int id=Query.getUserIdFromUsername(username);
-				return new String[]{seeRole(id),Query.getName(id)};
+				return new String[]{seeRole(id),Query.getNameById(id)};
 			}
 		}
 		
@@ -56,6 +56,7 @@ public class LoginModel {
 	private String seeRole(int id) {
 		if(Query.isPrincipal(id)) {
 			System.out.println("principal");
+			
 			return "principal";
 		}
 		else if(Query.isStudent(id)) {

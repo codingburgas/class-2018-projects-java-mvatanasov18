@@ -42,7 +42,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#createStudentAccount" prefHeight="72.0" prefWidth="173.0" text="Add Teacher">
+            <Button mnemonicParsing="false" onAction="#createTeacherAccount" prefHeight="72.0" prefWidth="173.0" text="Add Teacher">
                <font>
                   <Font size="19.0" />
                </font>

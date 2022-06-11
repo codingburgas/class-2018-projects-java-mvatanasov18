@@ -27,13 +27,13 @@ private TeamsController tc;
 			
 			Navbar n=new Navbar();
 			ToolBar tb=tc.getNavbar();
-			 if( Session.role.equals("principal")) {
+			 if( Session.getRole().equals("principal")) {
 				
 				n.addButton("Logout", tb);
 				n.addButton("Add", tb);
 				n.addButton("View Tasks", tb);
 				n.addButton("Calendar", tb);
-			}else if( Session.role.equals("student") || Session.role.equals("teacher")) {
+			}else if( Session.getRole().equals("student") || Session.getRole().equals("teacher")) {
 				
 				n.addButton("Logout", tb);
 				n.addButton("View Tasks", tb);

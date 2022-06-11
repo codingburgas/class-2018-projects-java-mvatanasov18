@@ -45,9 +45,10 @@ public class Navbar {
 				@Override
 				public void handle(Event event) {
 					System.out.println("Logout");
-					Session.isLoggedIn = false;
-					Session.name = "";
-					Session.role = "";
+					Session.setLoggedIn(false);
+					Session.setName("");
+					Session.setRole("");
+					Session.setSchoolName("");
 					new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
 				}
 

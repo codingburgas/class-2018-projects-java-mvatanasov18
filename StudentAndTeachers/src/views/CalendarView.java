@@ -27,13 +27,13 @@ private CalendarController cc;
 			
 			Navbar n=new Navbar();
 			ToolBar tb=cc.getNavbar();
-			 if( Session.role.equals("principal")) {
+			 if( Session.getRole().equals("principal")) {
 				
 				n.addButton("Logout", tb);
 				n.addButton("Add", tb);
 				n.addButton("Teams", tb);
 				n.addButton("View Tasks", tb);
-			}else if( Session.role.equals("student") || Session.role.equals("teacher")) {
+			}else if( Session.getRole().equals("student") || Session.getRole().equals("teacher")) {
 				
 				n.addButton("Logout", tb);
 				n.addButton("Teams", tb);

@@ -25,7 +25,7 @@ private LoginController lc;
 			
 			Navbar n=new Navbar();
 			ToolBar tb=lc.getNavbar();
-			if (Session.name.equals("")) {
+			if (Session.getName().equals("")) {
 				
 				
 				

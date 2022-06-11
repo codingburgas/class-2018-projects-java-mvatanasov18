@@ -27,7 +27,7 @@ public class RegisterView {
 			rc=loader.getController();
 			Navbar n=new Navbar();
 			ToolBar tb=rc.getNavbar();
-			if (Session.name.equals("")) {
+			if (Session.getName().equals("")) {
 				
 				
 				

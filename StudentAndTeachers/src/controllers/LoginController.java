@@ -40,9 +40,9 @@ public class LoginController {
 				message[0].equals("teacher")||
 				message[0].equals("principal")) {
 			
-			Session.isLoggedIn=true;
-			Session.name=message[1];
-			Session.role=message[0];
+			Session.setLoggedIn(false);
+			Session.setName(message[1]);
+			Session.setRole(message[0]);
 			new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
 			System.out.println("tuk sum");
 			

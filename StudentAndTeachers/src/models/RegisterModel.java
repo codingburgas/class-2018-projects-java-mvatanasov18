@@ -41,10 +41,10 @@ public class RegisterModel {
 		}
 
 		if (v.isUsernameUnique(username)) {
-			int id = Query.insertUser(username, password, firstName, lastName, address, phone);
+			int id = Query.insertUser(username, password, firstName, lastName, address, phone, schoolName);
 
-			Query.insertPrincipal(id, schoolName);
-			return "all Ok";
+			Query.insertPrincipal(id);
+			return "Added user with first name: "+firstName;
 		}
 
 		return "username is taken";

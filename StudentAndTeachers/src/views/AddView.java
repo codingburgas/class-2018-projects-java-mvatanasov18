@@ -27,7 +27,7 @@ public class AddView extends Navbar {
 
 			Navbar n = new Navbar();
 			ToolBar tb = ac.getNavbar();
-			if (Session.role.equals("principal")) {
+			if (Session.getRole().equals("principal")) {
 
 				n.addButton("Logout", tb);
 				n.addButton("Teams", tb);

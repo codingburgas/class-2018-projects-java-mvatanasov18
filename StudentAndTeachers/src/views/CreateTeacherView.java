@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import animatefx.animation.FadeIn;
 import controllers.CreateStudentController;
+import controllers.CreateTeacherController;
 import controllers.Session;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,31 +12,33 @@ import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 
-public class CreateStudentView extends Navbar {
+public class CreateTeacherView extends Navbar {
 
-	private CreateStudentController csc;
+	private CreateTeacherController ctc;
 
-	public CreateStudentView(Stage stage) {
+	public CreateTeacherView(Stage stage) {
 
 		try {
 
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/CreateStudent.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/CreateTeacher.fxml"));
 
 			Parent root = loader.load();
 
-			csc = loader.getController();
+			ctc = loader.getController();
 
 			Navbar n = new Navbar();
-			ToolBar tb = csc.getNavbar();
+			ToolBar tb = ctc.getNavbar();
 
 			n.addButton("Logout", tb);
 			n.addButton("Add", tb);
 			n.addButton("Teams", tb);
 			n.addButton("View Tasks", tb);
 			n.addButton("Calendar", tb);
+
 			if (!Session.getUserName().equals("")) {
-				csc.getBlock().setText("Added a user with name: " + Session.getUserName());
+				ctc.getBlock().setText("Added a user with name: " + Session.getUserName());
 			}
+			
 			stage.setTitle("Students and Teachers");
 
 			Scene scene = new Scene(root);

@@ -28,9 +28,9 @@ public class IndexView extends Navbar {
 			Navbar n=new Navbar();
 			ToolBar tb=hc.getNavbar();
 			
-			System.out.println("role: "+Session.role);
+			System.out.println("role: "+Session.getRole());
 			
-			if (Session.name.equals("")) {
+			if (Session.getName().equals("")) {
 				
 				
 				
@@ -38,15 +38,15 @@ public class IndexView extends Navbar {
 				n.addButton("Login", tb);
 				n.addButton("Register", tb);
 				
-			}else if( Session.role.equals("principal")) {
-				hc.setText(", " + Session.name);
+			}else if( Session.getRole().equals("principal")) {
+				hc.setText(", " + Session.getName());
 				n.addButton("Logout", tb);
 				n.addButton("Add", tb);
 				n.addButton("Teams", tb);
 				n.addButton("View Tasks", tb);
 				n.addButton("Calendar", tb);
-			}else if( Session.role.equals("student") || Session.role.equals("teacher")) {
-				hc.setText(", " + Session.name);
+			}else if( Session.getRole().equals("student") || Session.getRole().equals("teacher")) {
+				hc.setText(", " + Session.getRole());
 				n.addButton("Logout", tb);
 				n.addButton("Teams", tb);
 				n.addButton("View Tasks", tb);
