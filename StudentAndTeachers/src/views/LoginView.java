@@ -16,7 +16,7 @@ private LoginController lc;
 	public LoginView(Stage stage){
 		
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/Login.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/Login.fxml"));
 			Parent root = loader.load();
 			
 			stage.setTitle("Students and Teachers");

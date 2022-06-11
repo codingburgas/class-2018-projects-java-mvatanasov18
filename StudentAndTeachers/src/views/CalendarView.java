@@ -19,7 +19,7 @@ private CalendarController cc;
 		
 		try {
 			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/Calendar.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/Calendar.fxml"));
 			
 			Parent root = loader.load();
 			

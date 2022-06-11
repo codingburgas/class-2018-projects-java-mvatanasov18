@@ -17,7 +17,7 @@ public class RegisterView {
 	public RegisterView (Stage stage){
 		//System.out.println("In register");
 		try {
-			FXMLLoader loader=new FXMLLoader(getClass().getResource("/resources/Register.fxml"));
+			FXMLLoader loader=new FXMLLoader(getClass().getResource("/resources/fxml/Register.fxml"));
 			Parent root=loader.load();
 			stage.setTitle("Students and Teachers");
 			

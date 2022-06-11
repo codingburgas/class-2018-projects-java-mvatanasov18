@@ -19,7 +19,7 @@ public class CreateStudentView extends Navbar {
 
 		try {
 
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/CreateStudent.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/create/CreateStudent.fxml"));
 
 			Parent root = loader.load();
 

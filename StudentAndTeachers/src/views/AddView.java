@@ -19,7 +19,7 @@ public class AddView extends Navbar {
 
 		try {
 
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/Add.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/create/Add.fxml"));
 
 			Parent root = loader.load();
 

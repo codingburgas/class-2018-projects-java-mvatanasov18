@@ -1,4 +1,4 @@
-package views;
+package views.tasks;
 
 import java.io.IOException;
 
@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
+import views.Navbar;
 
 public class TasksView  extends Navbar{
 
@@ -19,7 +20,7 @@ private TasksController tc;
 		
 		try {
 			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/Tasks.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/tasks/Tasks.fxml"));
 			
 			Parent root = loader.load();
 			

@@ -20,7 +20,7 @@ public class IndexView extends Navbar {
 	public IndexView(Stage stage) {
 		try {
 
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/Index.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/Index.fxml"));
 
 			Parent root = loader.load();
 			hc = loader.getController();

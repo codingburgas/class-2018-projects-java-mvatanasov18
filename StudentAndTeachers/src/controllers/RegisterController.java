@@ -60,7 +60,7 @@ public class RegisterController {
 		errorBlock.setText(message);
 		
 		
-		if(message.equals("all Ok")) {
+		if(message.contains(firstName.getCharacters())) {
 			
 			LoginView login = new LoginView((Stage) ((Node) event.getSource()).getScene().getWindow());
 		}

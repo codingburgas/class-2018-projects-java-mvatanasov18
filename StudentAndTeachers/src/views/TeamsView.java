@@ -19,7 +19,7 @@ private TeamsController tc;
 		
 		try {
 			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/Teams.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/teams/Teams.fxml"));
 			
 			Parent root = loader.load();
 			

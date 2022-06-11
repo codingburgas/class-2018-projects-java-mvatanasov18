@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
+import views.tasks.TasksView;
 
 public class Navbar {
 

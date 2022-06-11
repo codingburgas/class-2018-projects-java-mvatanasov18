@@ -20,7 +20,7 @@ public class CreateTeacherView extends Navbar {
 
 		try {
 
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/CreateTeacher.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/create/CreateTeacher.fxml"));
 
 			Parent root = loader.load();
 
