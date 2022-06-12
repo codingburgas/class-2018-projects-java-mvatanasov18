@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [StudentsAndTeachers]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  Database [StudentsAndTeachers]    Script Date: 6/12/2022 5:57:00 PM ******/
 CREATE DATABASE [StudentsAndTeachers]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,17 +80,16 @@ ALTER DATABASE [StudentsAndTeachers] SET QUERY_STORE = OFF
 GO
 USE [StudentsAndTeachers]
 GO
-/****** Object:  User [hui]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  User [hui]    Script Date: 6/12/2022 5:57:00 PM ******/
 CREATE USER [hui] FOR LOGIN [JSUser] WITH DEFAULT_SCHEMA=[db_owner]
 GO
-/****** Object:  Table [dbo].[Principals]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  Table [dbo].[Principals]    Script Date: 6/12/2022 5:57:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Principals](
 	[principalId] [int] IDENTITY(1,1) NOT NULL,
-	[schoolName] [nvarchar](255) NOT NULL,
 	[isVerified] [bit] NOT NULL,
 	[userId] [int] NOT NULL,
  CONSTRAINT [PK_Principals] PRIMARY KEY CLUSTERED 
@@ -99,15 +98,15 @@ CREATE TABLE [dbo].[Principals](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Projects]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  Table [dbo].[Projects]    Script Date: 6/12/2022 5:57:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Projects](
 	[projectId] [int] IDENTITY(1,1) NOT NULL,
-	[dueDate] [datetime2](7) NOT NULL,
-	[startDate] [datetime2](7) NOT NULL,
+	[dueDate] [date] NOT NULL,
+	[startDate] [date] NOT NULL,
 	[title] [nvarchar](255) NOT NULL,
 	[description] [ntext] NOT NULL,
  CONSTRAINT [PK_Projects] PRIMARY KEY CLUSTERED 
@@ -116,7 +115,7 @@ CREATE TABLE [dbo].[Projects](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Students]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  Table [dbo].[Students]    Script Date: 6/12/2022 5:57:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -133,7 +132,7 @@ CREATE TABLE [dbo].[Students](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Students-Teams]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  Table [dbo].[Students-Teams]    Script Date: 6/12/2022 5:57:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -143,25 +142,26 @@ CREATE TABLE [dbo].[Students-Teams](
 	[teamId] [int] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Tasks]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  Table [dbo].[Tasks]    Script Date: 6/12/2022 5:57:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Tasks](
 	[taskId] [int] IDENTITY(1,1) NOT NULL,
-	[teacherId] [int] NOT NULL,
+	[teacherId] [int] NULL,
 	[studentId] [int] NOT NULL,
-	[dueDate] [datetime2](7) NOT NULL,
+	[dueDate] [date] NOT NULL,
 	[description] [text] NOT NULL,
 	[title] [nvarchar](255) NOT NULL,
+	[principalId] [int] NULL,
  CONSTRAINT [PK_Tasks] PRIMARY KEY CLUSTERED 
 (
 	[taskId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Teachers]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  Table [dbo].[Teachers]    Script Date: 6/12/2022 5:57:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -176,7 +176,7 @@ CREATE TABLE [dbo].[Teachers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Teams]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  Table [dbo].[Teams]    Script Date: 6/12/2022 5:57:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -190,7 +190,7 @@ CREATE TABLE [dbo].[Teams](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Teams-Projects]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  Table [dbo].[Teams-Projects]    Script Date: 6/12/2022 5:57:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -200,7 +200,7 @@ CREATE TABLE [dbo].[Teams-Projects](
 	[projectId] [int] NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 6/12/2022 5:57:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -213,6 +213,7 @@ CREATE TABLE [dbo].[Users](
 	[password] [varbinary](max) NOT NULL,
 	[address] [varbinary](max) NOT NULL,
 	[phone] [varchar](50) NOT NULL,
+	[schoolName] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
 (
 	[userId] ASC
@@ -247,6 +248,11 @@ REFERENCES [dbo].[Teams] ([teamId])
 GO
 ALTER TABLE [dbo].[Students-Teams] CHECK CONSTRAINT [FK_Students-Teams_Teams]
 GO
+ALTER TABLE [dbo].[Tasks]  WITH CHECK ADD  CONSTRAINT [FK_Tasks_Principals] FOREIGN KEY([principalId])
+REFERENCES [dbo].[Principals] ([principalId])
+GO
+ALTER TABLE [dbo].[Tasks] CHECK CONSTRAINT [FK_Tasks_Principals]
+GO
 ALTER TABLE [dbo].[Tasks]  WITH CHECK ADD  CONSTRAINT [FK_Tasks_Students] FOREIGN KEY([studentId])
 REFERENCES [dbo].[Students] ([studentId])
 GO
@@ -280,7 +286,7 @@ ALTER TABLE [dbo].[Tasks]  WITH CHECK ADD  CONSTRAINT [CK_dueDate] CHECK  (([due
 GO
 ALTER TABLE [dbo].[Tasks] CHECK CONSTRAINT [CK_dueDate]
 GO
-/****** Object:  StoredProcedure [dbo].[insertStudent]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  StoredProcedure [dbo].[insertStudent]    Script Date: 6/12/2022 5:57:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -307,6 +313,7 @@ BEGIN
 	@userId)
 END
 GO
+/****** Object:  StoredProcedure [dbo].[insertTeacher]    Script Date: 6/12/2022 5:57:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -328,7 +335,7 @@ BEGIN
 	VALUES(@subjectName,@userId)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[insertUser]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  StoredProcedure [dbo].[insertUser]    Script Date: 6/12/2022 5:57:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -338,24 +345,25 @@ GO
 -- Create date: <dnes>
 -- Description:	<nz kvo pravq navun e slunchevo a az pisha kod>
 -- =============================================
-Create PROCEDURE [dbo].[insertUser]
+CREATE PROCEDURE [dbo].[insertUser]
 	@Username nvarchar(255),
 	@FirstName nvarchar(255),
 	@LastName nvarchar(255),
 	@Password nvarchar(255),
 	@Address nvarchar(255),
-	@Phone varchar(50)
+	@Phone varchar(50),
+	@SchoolName nvarchar(255)
 AS
 BEGIN
 	
 	SET NOCOUNT ON;
-	INSERT INTO Users(username,firstName,lastName,password,address,phone)
+	INSERT INTO Users(username,firstName,lastName,password,address,phone,schoolName)
 	VALUES(@Username,@FirstName,@LastName, CONVERT(varbinary(max),EncryptByPassPhrase('hui',@Password)   ,2),
-	CONVERT(varbinary(max),EncryptByPassPhrase('hui',@Address)   ,2), @Phone);
+	CONVERT(varbinary(max),EncryptByPassPhrase('hui',@Address)   ,2), @Phone,@SchoolName);
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[returnPassword]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  StoredProcedure [dbo].[returnPassword]    Script Date: 6/12/2022 5:57:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -375,7 +383,7 @@ BEGIN
 	WHERE username=@username;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[returnStudentData]    Script Date: 5/23/2022 1:01:40 AM ******/
+/****** Object:  StoredProcedure [dbo].[returnStudentData]    Script Date: 6/12/2022 5:57:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

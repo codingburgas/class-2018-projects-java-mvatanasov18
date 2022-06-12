@@ -1,10 +1,12 @@
 package models.tasks;
 
+import java.sql.Date;
+
 import models.Student;
 
 public class Task {
-
-	private String dueDate;
+	private int taskId;
+	private Date dueDate;
 	private String title;
 	private String description;
 	private Student student;
@@ -15,17 +17,25 @@ public class Task {
 	
 	
 	
-	public Task(String dueDate, String title, String description, Student student) {
-		this.dueDate = dueDate;
+	public int getTaskId() {
+		return taskId;
+	}
+
+	public void setTaskId(int taskId) {
+		this.taskId = taskId;
+	}
+
+	public Task(Date date, String title, String description, Student student) {
+		this.dueDate = date;
 		this.title = title;
 		this.description = description;
 		this.student = student;
 	}
 	
-	public String getDueDate() {
+	public Date getDueDate() {
 		return dueDate;
 	}
-	public void setDueDate(String dueDate) {
+	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
 	}
 	public String getTitle() {

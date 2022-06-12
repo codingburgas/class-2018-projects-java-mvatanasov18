@@ -1,6 +1,8 @@
 package controllers.tasks;
 
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -68,13 +70,13 @@ public class AddTaskController implements Initializable {
 		
 	}
 	
-	public void submit() {
-		
+	public void submit() throws ParseException {
+
 		LocalDate chosenDate=dueDate.getValue();
-		
+
 		new AddTaskModel()
 		.addTask(new Task(
-				chosenDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+				java.sql.Date.valueOf(chosenDate),
 				title.getText().toString(),
 				description.getText().toString(),
 				currentStudent

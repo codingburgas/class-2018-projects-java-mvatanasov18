@@ -1,16 +1,17 @@
 package models.db;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import models.Session;
 import models.Student;
-
+import models.tasks.Task;
 
 //getStudentsBySchoolName
 //getSchoolNameByUsername
@@ -24,56 +25,43 @@ import models.Student;
 //insertStudent
 //insertTaskPrincipal
 //isPrincipal
-//
+//isStudent
+//isTeacher
 
 public class Query {
 ////////////////// GET QUERIES
-	
-	
+
 	public static List<Student> getStudentsBySchoolName(String schoolName) {
-		
+
 		try {
-			List<Student> list=new ArrayList<>();
-			ConnectionModel model=new ConnectionModel();
-			
-			String query="SELECT "
-					+ "Users.username, "
-					+ "firstName, "
-					+ "lastName , "
-					+ "Students.studentId "
-					+ "FROM Users "
-					+ "INNER JOIN Students ON Users.userId=Students.userId AND Users.schoolName=?";
-			
-			PreparedStatement ps=model.createPrepareStatement(query);
+			List<Student> list = new ArrayList<>();
+			ConnectionModel model = new ConnectionModel();
+
+			String query = "SELECT " + "Users.username, " + "firstName, " + "lastName , " + "Students.studentId "
+					+ "FROM Users " + "INNER JOIN Students ON Users.userId=Students.userId AND Users.schoolName=?";
+
+			PreparedStatement ps = model.createPrepareStatement(query);
 			ps.setString(1, schoolName);
-			ResultSet rs=ps.executeQuery();
-			
-			
-			while(rs.next()) {
-				list.add(new Student(
-						rs.getInt("studentId"),
-						rs.getNString("firstName"),
-						rs.getNString("lastName"),
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				list.add(new Student(rs.getInt("studentId"), rs.getNString("firstName"), rs.getNString("lastName"),
 						rs.getNString("username")));
 			}
-			
-			
+
 			model.closeConnection();
 			return list;
-		}catch(Exception e){
+		} catch (Exception e) {
 			System.out.println("Error when retrieving students");
 		}
-		
-		
+
 		return null;
 	}
-	
-	
-	
+
 	public static String getSchoolNameByUsername(String username) {
 		try {
 			ConnectionModel model = new ConnectionModel();
-			String query="SELECT schoolName FROM Users WHERE username=?";
+			String query = "SELECT schoolName FROM Users WHERE username=?";
 			PreparedStatement ps = model.createPrepareStatement(query);
 			ps.setString(1, username);
 
@@ -85,15 +73,13 @@ public class Query {
 			model.closeConnection();
 
 			return schoolName;
-		}catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("Error when retrieving school name");
 			return " ";
 		}
-		
+
 	}
-	
-	
-	
+
 	public static String findDuplicateUsername(String username) {
 		try {
 
@@ -170,8 +156,7 @@ public class Query {
 			return "a";
 		}
 	}
-	
-	
+
 	public static String getNameById(int id) {
 		try {
 
@@ -184,30 +169,84 @@ public class Query {
 
 			ResultSet resultSet = ps.executeQuery();
 			resultSet.next();
-			String firstName= resultSet.getString(1);
+			String firstName = resultSet.getString(1);
 
 			model.closeConnection();
 			System.out.println(firstName);
 			return firstName;
 		} catch (Exception e) {
 			System.out.println("No user");
-			
+
 		}
 		return "";
 	}
-	
-	
-	
-	/////////////////////     INSERT     ////////////////
+
+	public static Map<Integer, Task> getTasksBySchoolName() {
+		try {
+			String query = "SELECT [Tasks].[taskId]" + "      ,[Tasks].[teacherId]" + "      ,[Tasks].[dueDate]"
+					+ "      ,[Tasks].[description]" + "      ,[Tasks].[title]" + "      ,Principals.[principalId]"
+					+ "	  ,Users.username" + "	  ,Students.studentId" + "  FROM [StudentsAndTeachers].[dbo].[Tasks]"
+					+ "  INNER JOIN Principals ON Principals.principalId=Tasks.principalId "
+					+ "  Inner join Users ON Users.userId=Principals.userId AND Users.schoolName=? "
+					+ "  Inner Join Students ON Tasks.studentId=Students.studentId ";
+
+			ConnectionModel model = new ConnectionModel();
+			PreparedStatement ps = model.createPrepareStatement(query);
+			ps.setNString(1, Session.getSchoolName());
+			Map<Integer, Task> tasks = new HashMap<>();
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+
+				Task t = new Task(rs.getDate("dueDate"), rs.getNString("title"), rs.getString("description"),
+						getStudentByStudentId(rs.getInt("studentId")));
+				t.setTaskId(rs.getInt("taskId"));
+				tasks.put(rs.getInt("taskId"), t);
+			}
+			return tasks;
+
+		} catch (Exception e) {
+			System.out.println("Error when retrieving tasks");
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public static Student getStudentByStudentId(int studentId) {
+		try {
+
+			String query = "SELECT [studentId]," + "Users.firstName," + "Users.lastName," + "Users.username"
+					+ "  FROM [StudentsAndTeachers].[dbo].[Students]"
+					+ "  INNER JOIN Users ON Users.userId=Students.userId AND studentId=?";
+			ConnectionModel model = new ConnectionModel();
+			PreparedStatement ps = model.createPrepareStatement(query);
+			ps.setInt(1, studentId);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				return new Student(rs.getInt("studentId"), rs.getString("firstName"), rs.getString("lastName"),
+						rs.getString("username"));
+			}
+
+		} catch (Exception e) {
+			System.out.println("Error when retrieving data from Students id= " + studentId);
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	///////////////////// INSERT ////////////////
 	public static int insertUser(String username, String password, String firstName, String lastName, String address,
-			String phone,String schoolName) {
+			String phone, String schoolName) {
 
 		try {
 
 			ConnectionModel model = new ConnectionModel();
 
 			String query = "EXEC	insertUser" + "		@Username = ? ," + "		@FirstName = ?"
-					+ ",	@LastName = ?," + "		@Password = ? ," + "		@Address = ? ," + "		@Phone = ?, @SchoolName=?";
+					+ ",	@LastName = ?," + "		@Password = ? ," + "		@Address = ? ,"
+					+ "		@Phone = ?, @SchoolName=?";
 
 			PreparedStatement ps = model.createPrepareStatement(query);
 
@@ -230,7 +269,7 @@ public class Query {
 			return id;
 
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 
 		}
@@ -261,7 +300,7 @@ public class Query {
 		}
 
 	}
-	
+
 	public static void insertTeacher(int userId, String subjectName) {
 
 		try {
@@ -286,14 +325,13 @@ public class Query {
 		}
 
 	}
-	
-	public static void insertStudent(int userId, String parentPhone,String parentEmail,String parentAddress) {
+
+	public static void insertStudent(int userId, String parentPhone, String parentEmail, String parentAddress) {
 
 		try {
 			ConnectionModel model = new ConnectionModel();
 
-			String query = "EXEC insertStudent @parentPhone=? "
-					+ ", @parentAddress=? , @parentEmail=? , @userId=?  ";
+			String query = "EXEC insertStudent @parentPhone=? " + ", @parentAddress=? , @parentEmail=? , @userId=?  ";
 			PreparedStatement ps = model.createPrepareStatement(query);
 
 			ps.setString(1, parentPhone);
@@ -314,63 +352,51 @@ public class Query {
 		}
 
 	}
-	
-	
-	public static void insertTaskPrincipal(int studentId,String dueDate,String description,String title) {
+
+	public static void insertTaskPrincipal(int studentId, Date dueDate, String description, String title) {
 		try {
-			String query="INSERT INTO Tasks("
-					+ "principalId,"
-					+ "studentId,"
-					+ "dueDate,"
-					+ "description,"
-					+ "title) "
-					+ "VALUES(?,?,?,?,?)";
-			
-			ConnectionModel model=new ConnectionModel();
-			
-			PreparedStatement ps=model.createPrepareStatement(query);
+			String query = "INSERT INTO Tasks(" + "principalId," + "studentId," + "dueDate," + "description,"
+					+ "title) " + "VALUES(?,?,?,?,?)";
+
+			ConnectionModel model = new ConnectionModel();
+
+			PreparedStatement ps = model.createPrepareStatement(query);
 			ps.setInt(1, Session.getId());
 			ps.setInt(2, studentId);
-			ps.setObject(3, LocalDate.parse(dueDate,DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+			ps.setDate(3, dueDate);
 			ps.setNString(4, description);
 			ps.setNString(5, title);
-			
-			int rows=ps.executeUpdate();
-			System.out.println("Affected rows: "+rows);
-		}catch(Exception e) {
+
+			int rows = ps.executeUpdate();
+			System.out.println("Affected rows: " + rows);
+		} catch (Exception e) {
 			System.out.println("Error when inserting task");
 			e.printStackTrace();
 		}
 	}
-	
-	
-	public static void insertTaskTeacher(int studentId,String dueDate,String description,String title) {
+
+	public static void insertTaskTeacher(int studentId, Date dueDate, String description, String title) {
 		try {
-			String query="INSERT INTO Tasks("
-					+ "teacherId,"
-					+ "studentId,"
-					+ "dueDate,"
-					+ "description,"
-					+ "title) "
+			String query = "INSERT INTO Tasks(" + "teacherId," + "studentId," + "dueDate," + "description," + "title) "
 					+ "VALUES(?,?,?,?,?)";
-			
-			ConnectionModel model=new ConnectionModel();
-			
-			PreparedStatement ps=model.createPrepareStatement(query);
+
+			ConnectionModel model = new ConnectionModel();
+
+			PreparedStatement ps = model.createPrepareStatement(query);
 			ps.setInt(1, Session.getId());
 			ps.setInt(2, studentId);
-			ps.setObject(3, LocalDate.parse(dueDate,DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+			ps.setDate(3, dueDate);
 			ps.setNString(4, description);
 			ps.setNString(5, title);
-			
-			int rows=ps.executeUpdate();
-			System.out.println("Affected rows: "+rows);
-		}catch(Exception e) {
+
+			int rows = ps.executeUpdate();
+			System.out.println("Affected rows: " + rows);
+		} catch (Exception e) {
 			System.out.println("Error when inserting task");
 			e.printStackTrace();
 		}
 	}
-	
+
 	/////////// CHECKING ROLE
 	public static boolean isPrincipal(int id) {
 		try {
@@ -391,11 +417,10 @@ public class Query {
 			Session.setId(principalId);
 			return true;
 		} catch (Exception e) {
-			System.out.println("No principal with id: "+id);
-			
+			System.out.println("No principal with id: " + id);
+
 		}
-		
-		
+
 		return false;
 	}
 
@@ -418,8 +443,8 @@ public class Query {
 			Session.setId(studentId);
 			return true;
 		} catch (Exception e) {
-			System.out.println("No student with id: "+id);
-			
+			System.out.println("No student with id: " + id);
+
 		}
 		return false;
 	}
@@ -443,11 +468,10 @@ public class Query {
 			Session.setId(teacherId);
 			return true;
 		} catch (Exception e) {
-			System.out.println("No teacher with id: "+id);
-			
+			System.out.println("No teacher with id: " + id);
+
 		}
 		return false;
 	}
-
 
 }

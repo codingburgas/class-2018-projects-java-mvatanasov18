@@ -39,7 +39,7 @@ public class Student {
 	}
 	@Override
 	public String toString() {
-		return "Id=" + studentId + ", name =" + firstName + " " + lastName + ", username="
+		return "id: "+studentId + " ; name: " + firstName + " " + lastName + " ; username: "
 				+ username ;
 	}
 	
