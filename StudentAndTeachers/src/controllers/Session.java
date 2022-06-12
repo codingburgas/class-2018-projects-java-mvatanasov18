@@ -6,7 +6,7 @@ private static String name="";
 private static String role="";
 private static String schoolName="";
 private static String userName="";
-
+private static int id=0;
 
 public static boolean isLoggedIn() {
 	return loggedIn;
@@ -39,6 +39,12 @@ public static String getUserName() {
 }
 public static void setUserName(String userName) {
 	Session.userName= userName;
+}
+public static int getId() {
+	return id;
+}
+public static void setId(int id) {
+	Session.id = id;
 }
 
 

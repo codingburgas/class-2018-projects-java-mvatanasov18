@@ -2,6 +2,7 @@ package models;
 
 import java.util.Arrays;
 
+import controllers.Session;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -27,6 +28,7 @@ public class LoginModel {
 			if(checkPassword()) {
 				System.out.println("Login was successful");
 				int id=Query.getUserIdFromUsername(username);
+				Session.setSchoolName(Query.getSchoolNameByUsername(username));
 				return new String[]{seeRole(id),Query.getNameById(id)};
 			}
 		}

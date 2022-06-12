@@ -3,18 +3,76 @@ package models;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
+import controllers.Session;
 
 
+//getStudentsBySchoolName
+//getSchoolNameByUsername
+//findDuplicateUsername
+//getUserIdFromUsername
+//selectPasswordByUsername
+//getNameById
+//insertUser
+//insertPrincipal
+//insertTeacher
+//insertStudent
+//insertTaskPrincipal
+//isPrincipal
+//
 
 public class Query {
-////////////////// GET COLUMNS 
+////////////////// GET QUERIES
+	
+	
+	public static List<Student> getStudentsBySchoolName(String schoolName) {
+		
+		try {
+			List<Student> list=new ArrayList<>();
+			ConnectionModel model=new ConnectionModel();
+			
+			String query="SELECT "
+					+ "Users.username, "
+					+ "firstName, "
+					+ "lastName , "
+					+ "Students.studentId "
+					+ "FROM Users "
+					+ "INNER JOIN Students ON Users.userId=Students.userId AND Users.schoolName=?";
+			
+			PreparedStatement ps=model.createPrepareStatement(query);
+			ps.setString(1, schoolName);
+			ResultSet rs=ps.executeQuery();
+			
+			
+			while(rs.next()) {
+				list.add(new Student(
+						rs.getInt("studentId"),
+						rs.getNString("firstName"),
+						rs.getNString("lastName"),
+						rs.getNString("username")));
+			}
+			
+			
+			model.closeConnection();
+			return list;
+		}catch(Exception e){
+			System.out.println("Error when retrieving students");
+		}
+		
+		
+		return null;
+	}
 	
 	
 	
 	public static String getSchoolNameByUsername(String username) {
 		try {
 			ConnectionModel model = new ConnectionModel();
-			String query="SELECT schoolName FROM Users WHERE userId=?";
+			String query="SELECT schoolName FROM Users WHERE username=?";
 			PreparedStatement ps = model.createPrepareStatement(query);
 			ps.setString(1, username);
 
@@ -159,7 +217,6 @@ public class Query {
 			ps.setString(5, address);
 			ps.setString(6, phone);
 			ps.setString(7, schoolName);
-			System.out.println(query);
 
 			int rows = ps.executeUpdate();
 
@@ -258,23 +315,79 @@ public class Query {
 	}
 	
 	
+	public static void insertTaskPrincipal(int studentId,String dueDate,String description,String title) {
+		try {
+			String query="INSERT INTO Tasks("
+					+ "principalId,"
+					+ "studentId,"
+					+ "dueDate,"
+					+ "description,"
+					+ "title) "
+					+ "VALUES(?,?,?,?,?)";
+			
+			ConnectionModel model=new ConnectionModel();
+			
+			PreparedStatement ps=model.createPrepareStatement(query);
+			ps.setInt(1, Session.getId());
+			ps.setInt(2, studentId);
+			ps.setObject(3, LocalDate.parse(dueDate,DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+			ps.setNString(4, description);
+			ps.setNString(5, title);
+			
+			int rows=ps.executeUpdate();
+			System.out.println("Affected rows: "+rows);
+		}catch(Exception e) {
+			System.out.println("Error when inserting task");
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public static void insertTaskTeacher(int studentId,String dueDate,String description,String title) {
+		try {
+			String query="INSERT INTO Tasks("
+					+ "teacherId,"
+					+ "studentId,"
+					+ "dueDate,"
+					+ "description,"
+					+ "title) "
+					+ "VALUES(?,?,?,?,?)";
+			
+			ConnectionModel model=new ConnectionModel();
+			
+			PreparedStatement ps=model.createPrepareStatement(query);
+			ps.setInt(1, Session.getId());
+			ps.setInt(2, studentId);
+			ps.setObject(3, LocalDate.parse(dueDate,DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+			ps.setNString(4, description);
+			ps.setNString(5, title);
+			
+			int rows=ps.executeUpdate();
+			System.out.println("Affected rows: "+rows);
+		}catch(Exception e) {
+			System.out.println("Error when inserting task");
+			e.printStackTrace();
+		}
+	}
+	
 	/////////// CHECKING ROLE
 	public static boolean isPrincipal(int id) {
 		try {
 
 			ConnectionModel model = new ConnectionModel();
 
-			String query = "SELECT userId FROM Principals WHERE userId=?";
+			String query = "SELECT principalId FROM Principals WHERE userId=?";
 			PreparedStatement ps = model.createPrepareStatement(query);
 
 			ps.setInt(1, id);
 
 			ResultSet resultSet = ps.executeQuery();
 			resultSet.next();
-			int userid = resultSet.getInt(1);
+			int principalId = resultSet.getInt(1);
 
 			model.closeConnection();
-			System.out.println(userid);
+			System.out.println(principalId);
+			Session.setId(principalId);
 			return true;
 		} catch (Exception e) {
 			System.out.println("No principal with id: "+id);
@@ -290,17 +403,18 @@ public class Query {
 
 			ConnectionModel model = new ConnectionModel();
 
-			String query = "SELECT userId FROM Students WHERE userId=?";
+			String query = "SELECT studentId FROM Students WHERE userId=?";
 			PreparedStatement ps = model.createPrepareStatement(query);
 
 			ps.setInt(1, id);
 
 			ResultSet resultSet = ps.executeQuery();
 			resultSet.next();
-			int userid = resultSet.getInt(1);
+			int studentId = resultSet.getInt(1);
 
 			model.closeConnection();
-			System.out.println(userid);
+			System.out.println(studentId);
+			Session.setId(studentId);
 			return true;
 		} catch (Exception e) {
 			System.out.println("No student with id: "+id);
@@ -314,17 +428,18 @@ public class Query {
 
 			ConnectionModel model = new ConnectionModel();
 
-			String query = "SELECT userId FROM Teachers WHERE userId=?";
+			String query = "SELECT teacherId FROM Teachers WHERE userId=?";
 			PreparedStatement ps = model.createPrepareStatement(query);
 
 			ps.setInt(1, id);
 
 			ResultSet resultSet = ps.executeQuery();
 			resultSet.next();
-			int userid = resultSet.getInt(1);
+			int teacherId = resultSet.getInt(1);
 
 			model.closeConnection();
-			System.out.println(userid);
+			System.out.println(teacherId);
+			Session.setId(teacherId);
 			return true;
 		} catch (Exception e) {
 			System.out.println("No teacher with id: "+id);

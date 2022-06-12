@@ -48,6 +48,7 @@ public class CreateStudentModel {
 		}
 
 		if (v.isUsernameUnique(username)) {
+			System.out.println("School name: "+Session.getSchoolName());
 			int id = Query.insertUser(username, password, firstName, lastName, address,phone,Session.getSchoolName());
 
 			Query.insertStudent(id, parentPhone, parentEmail, parentAddress);

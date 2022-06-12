@@ -5,6 +5,13 @@
 	-fx-font-size:14;
 }
 
+.date-picker .text-field{
+	-fx-font-size:20;
+}
+.list-cell{
+    -fx-font-size:18.0;
+}
+
 #welcome{
 	
 	-fx-alignment:center;

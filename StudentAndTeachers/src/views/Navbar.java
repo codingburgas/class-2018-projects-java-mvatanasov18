@@ -50,6 +50,7 @@ public class Navbar {
 					Session.setName("");
 					Session.setRole("");
 					Session.setSchoolName("");
+					Session.setUserName("");
 					new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
 				}
 

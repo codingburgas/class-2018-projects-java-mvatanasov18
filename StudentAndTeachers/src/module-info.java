@@ -8,4 +8,5 @@ module StudentAndTeachers {
 	
 	opens main to javafx.graphics, javafx.fxml;
 	opens controllers to javafx.graphics, javafx.fxml;
+	opens controllers.tasks to javafx.graphics, javafx.fxml;
 }

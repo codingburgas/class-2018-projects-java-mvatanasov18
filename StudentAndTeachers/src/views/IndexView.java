@@ -46,7 +46,7 @@ public class IndexView extends Navbar {
 				n.addButton("View Tasks", tb);
 				n.addButton("Calendar", tb);
 			}else if( Session.getRole().equals("student") || Session.getRole().equals("teacher")) {
-				hc.setText(", " + Session.getRole());
+				hc.setText(", " + Session.getName());
 				n.addButton("Logout", tb);
 				n.addButton("Teams", tb);
 				n.addButton("View Tasks", tb);

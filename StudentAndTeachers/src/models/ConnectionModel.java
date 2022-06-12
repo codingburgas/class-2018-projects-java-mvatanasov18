@@ -36,10 +36,7 @@ public class ConnectionModel {
 			String connectionUrl = "jdbc:sqlserver://"+db+";database=" + dbName + ";user=" + user
 					+ ";password=" + password;
 
-			System.out.println("connecting.. ");
-			System.out.println(connectionUrl);
 			connection = DriverManager.getConnection(connectionUrl);
-			System.out.println("Connected. Martincho is happy");
 
 		}
 		// Handle any errors that may have occurred.
@@ -64,7 +61,6 @@ public class ConnectionModel {
 		if (!connection.isClosed()) {
 
 			connection.close();
-			System.out.println("Connection closed successfully. Dev is happy");
 		} else {
 			System.out.println("No connection was previously established");
 		}
