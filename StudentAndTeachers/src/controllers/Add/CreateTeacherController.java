@@ -1,4 +1,4 @@
-package controllers;
+package controllers.Add;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,15 +7,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
-import models.CreateStudentModel;
 import models.RegisterModel;
-import views.CreateStudentView;
-import views.CreateTeacherView;
+import models.Add.CreateStudentModel;
+import models.Add.CreateTeacherModel;
 import views.IndexView;
 import views.LoginView;
 import views.RegisterView;
+import views.Add.CreateTeacherView;
 
-public class CreateStudentController {
+public class CreateTeacherController {
 
 	@FXML
 	private ToolBar navbar;
@@ -35,20 +35,18 @@ public class CreateStudentController {
 	@FXML
 	private TextField phone;
 	@FXML
-	private TextField parentEmail;
-	@FXML
-	private TextField parentPhone;
-	@FXML
-	private TextField parentAddress;
+	private TextField subjectName;
 	@FXML
 	private Label errorBlock;
 	
 	public ToolBar getNavbar() {
 		return navbar;
 	}
+	
 	public Label getBlock() {
 		return errorBlock;
 	}
+	
 	public void submit(ActionEvent event) {
 		System.out.println("submit");
 
@@ -59,18 +57,16 @@ public class CreateStudentController {
 		String tempAddress=address.getText().toString();
 		String tempConfirmPassword=confirmPassword.getText().toString();
 		String tempPhone=phone.getText().toString();
-		String tempParentEmail=parentEmail.getText().toString();
-		String tempParentPhone=parentPhone.getText().toString();
-		String tempParentAddress=parentAddress.getText().toString();
+		String tempSubjectName=subjectName.getText().toString();
 		
-		String txt=new CreateStudentModel(tempUsername, tempPassword, tempFirstName,
+		String txt=new CreateTeacherModel(tempUsername, tempPassword, tempFirstName,
 				tempLastName, tempAddress, tempConfirmPassword,
-				tempPhone, tempParentEmail, 
-				tempParentPhone, tempParentAddress).checkStudentRegister();
+				tempPhone,tempSubjectName).checkTeacherRegister();
 		
 		if(txt.startsWith("Successfully")) {
-			new CreateStudentView((Stage) ((Node) event.getSource()).getScene().getWindow());
+			new CreateTeacherView((Stage) ((Node) event.getSource()).getScene().getWindow());
 		}
+		
 		errorBlock.setText(txt);
 		
 	}

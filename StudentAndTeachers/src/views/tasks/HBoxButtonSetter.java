@@ -1,4 +1,4 @@
-package views;
+package views.tasks;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -6,7 +6,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import views.tasks.AddTaskView;
 
 public class HBoxButtonSetter {
 

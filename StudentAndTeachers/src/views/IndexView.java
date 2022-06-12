@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import animatefx.animation.FadeIn;
 import controllers.HomeController;
-import controllers.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
+import models.Session;
 
 public class IndexView extends Navbar {
 	private HomeController hc;

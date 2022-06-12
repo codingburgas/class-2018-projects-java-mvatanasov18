@@ -1,8 +1,11 @@
-package models;
+package models.Add;
 
 import java.util.List;
 
-import controllers.Session;
+import models.Session;
+import models.Student;
+import models.db.Query;
+import models.tasks.Task;
 
 public class AddTaskModel {
 

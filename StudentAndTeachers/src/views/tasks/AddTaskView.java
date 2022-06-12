@@ -3,8 +3,7 @@ package views.tasks;
 import java.io.IOException;
 
 import animatefx.animation.FadeIn;
-import controllers.AddController;
-import controllers.Session;
+import controllers.Add.AddController;
 import controllers.tasks.AddTaskController;
 import controllers.tasks.TasksController;
 import javafx.event.Event;
@@ -18,7 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import views.HBoxButtonSetter;
+import models.Session;
 import views.IndexView;
 import views.Navbar;
 

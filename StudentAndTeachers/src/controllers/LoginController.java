@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 import models.LoginModel;
+import models.Session;
 import views.IndexView;
 import views.LoginView;
 import views.RegisterView;

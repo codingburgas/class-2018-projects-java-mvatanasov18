@@ -60,7 +60,7 @@ public class RegisterController {
 		errorBlock.setText(message);
 		
 		
-		if(message.contains(firstName.getCharacters())) {
+		if(message.contains("Added".subSequence(0, 4))) {
 			
 			LoginView login = new LoginView((Stage) ((Node) event.getSource()).getScene().getWindow());
 		}

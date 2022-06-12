@@ -3,14 +3,14 @@ package views;
 import java.io.IOException;
 
 import animatefx.animation.FadeIn;
-import controllers.AddController;
-import controllers.Session;
-import controllers.TeamsController;
+import controllers.Add.AddController;
+import controllers.teams.TeamsController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
+import models.Session;
 
 public class TeamsView  extends Navbar{
 

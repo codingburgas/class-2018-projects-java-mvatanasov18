@@ -4,12 +4,12 @@ import java.io.IOException;
 
 import animatefx.animation.FadeIn;
 import controllers.LoginController;
-import controllers.Session;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
+import models.Session;
 
 public class LoginView  extends Navbar{
 private LoginController lc;

@@ -1,12 +1,13 @@
 package views;
 
-import controllers.Session;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
+import models.Session;
+import views.Add.AddView;
 import views.tasks.TasksView;
 
 public class Navbar {

@@ -3,6 +3,8 @@ package models;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import models.db.Query;
+
 public class Validator {
 	public boolean isUsernameUnique(String username) {
 

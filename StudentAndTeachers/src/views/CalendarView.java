@@ -4,13 +4,13 @@ import java.io.IOException;
 
 import animatefx.animation.FadeIn;
 import controllers.CalendarController;
-import controllers.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
+import models.Session;
 
 public class CalendarView  extends Navbar{
 

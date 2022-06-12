@@ -1,8 +1,10 @@
-package models;
+package models.Add;
 
-import controllers.Session;
+import models.Session;
+import models.Validator;
+import models.db.Query;
 
-public class CreateStudentModel {
+public class CreateTeacherModel {
 	
 	private String username;
 	private String password;
@@ -11,14 +13,12 @@ public class CreateStudentModel {
 	private String address;
 	private String confirmPassword;
 	private String phone;
-	private String parentEmail;
-	private String parentPhone;
-	private String parentAddress;
+	private String subjectName;
 	
 
 	
-	public CreateStudentModel(String username, String password, String firstName, String lastName, String address,
-			String confirmPassword, String phone, String parentEmail, String parentPhone, String parentAddress) {
+	public CreateTeacherModel(String username, String password, String firstName, String lastName, String address,
+			String confirmPassword, String phone, String subjectName) {
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
@@ -26,18 +26,16 @@ public class CreateStudentModel {
 		this.address = address;
 		this.confirmPassword = confirmPassword;
 		this.phone = phone;
-		this.parentEmail = parentEmail;
-		this.parentPhone = parentPhone;
-		this.parentAddress = parentAddress;
+		this.subjectName = subjectName;
 	}
 
 
-	public String checkStudentRegister() {
+	public String checkTeacherRegister() {
 		
 		System.out.println("	begin check");
 		Validator v=new Validator();
 		if (v.areBlank( new String[] {username,password,firstName,lastName,
-				address, confirmPassword,phone,parentEmail,parentPhone,parentAddress} )) {
+				address, confirmPassword,phone,subjectName} )) {
 			return "Please enter data";
 		}
 		if (!v.isPasswordOk(password,confirmPassword)) {
@@ -48,12 +46,10 @@ public class CreateStudentModel {
 		}
 
 		if (v.isUsernameUnique(username)) {
-			System.out.println("School name: "+Session.getSchoolName());
 			int id = Query.insertUser(username, password, firstName, lastName, address,phone,Session.getSchoolName());
-
-			Query.insertStudent(id, parentPhone, parentEmail, parentAddress);
 			Session.setUserName(firstName);
-			return "Successfully added a student with name: "+firstName;
+			Query.insertTeacher(id,subjectName);
+			return "Successfully added a user with name: "+firstName;
 		}
 
 		

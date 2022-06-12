@@ -1,4 +1,4 @@
-package models;
+package models.db;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +8,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import controllers.Session;
+import models.Session;
+import models.Student;
 
 
 //getStudentsBySchoolName

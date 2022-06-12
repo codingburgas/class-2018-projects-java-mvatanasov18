@@ -1,4 +1,6 @@
-package models;
+package models.tasks;
+
+import models.Student;
 
 public class Task {
 

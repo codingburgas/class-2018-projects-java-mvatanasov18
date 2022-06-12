@@ -1,16 +1,17 @@
-package views;
+package views.Add;
 
 import java.io.IOException;
 
 import animatefx.animation.FadeIn;
-import controllers.CreateStudentController;
-import controllers.CreateTeacherController;
-import controllers.Session;
+import controllers.Add.CreateStudentController;
+import controllers.Add.CreateTeacherController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
+import models.Session;
+import views.Navbar;
 
 public class CreateTeacherView extends Navbar {
 

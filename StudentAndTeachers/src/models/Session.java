@@ -1,4 +1,4 @@
-package controllers;
+package models;
 
 public class Session {
 private static boolean loggedIn=false;

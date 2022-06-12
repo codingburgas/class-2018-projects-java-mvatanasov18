@@ -3,6 +3,8 @@ package models;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import models.db.Query;
+
 public class RegisterModel {
 
 	private String username;

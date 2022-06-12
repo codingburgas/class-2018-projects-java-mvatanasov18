@@ -2,10 +2,10 @@ package models;
 
 import java.util.Arrays;
 
-import controllers.Session;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import models.db.Query;
 
 public class LoginModel {
 	

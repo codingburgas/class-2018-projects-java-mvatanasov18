@@ -16,9 +16,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.HBox;
-import models.AddTaskModel;
 import models.Student;
-import models.Task;
+import models.Add.AddTaskModel;
+import models.tasks.Task;
 
 
 public class AddTaskController implements Initializable {
