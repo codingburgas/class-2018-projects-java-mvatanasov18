@@ -24,7 +24,7 @@ import models.tasks.Task;
 import models.tasks.ViewTasksModel;
 
 
-public class ViewTasksController  {
+public class DeleteTasksController  {
 
 	
 	@FXML
@@ -43,5 +43,7 @@ public class ViewTasksController  {
 		return new ViewTasksModel().getTasks();
 	}
 
-	
+	public int deleteTask(int taskId) {
+		return new ViewTasksModel().deleteTaskById(taskId);
+	}
 }

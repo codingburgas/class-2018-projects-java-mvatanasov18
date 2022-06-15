@@ -6,6 +6,7 @@ import java.util.Map;
 import animatefx.animation.FadeIn;
 import controllers.Add.AddController;
 import controllers.tasks.AddTaskController;
+import controllers.tasks.DeleteTasksController;
 import controllers.tasks.TasksController;
 import controllers.tasks.ViewTasksController;
 import javafx.collections.FXCollections;
@@ -18,33 +19,35 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import models.Session;
 import models.tasks.Task;
 import views.IndexView;
 import views.Navbar;
 
-public class ViewTasksView  extends Navbar{
+public class DeleteTasksView  extends Navbar{
 
-private ViewTasksController vtc;
-	public ViewTasksView(Stage stage){
+private DeleteTasksController dtc;
+	public DeleteTasksView(Stage stage){
 		
 		try {
 			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/tasks/ViewTasks.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/tasks/DeleteTasks.fxml"));
 			
 			Parent root = loader.load();
 			
-			vtc=loader.getController();
+			dtc=loader.getController();
 			
 			HBoxButtonSetter hbs=new HBoxButtonSetter();
 			Navbar n=new Navbar();
-			ToolBar tb=vtc.getNavbar();
+			ToolBar tb=dtc.getNavbar();
 
 		
 			if( Session.getRole().equals("principal")) {
@@ -54,7 +57,7 @@ private ViewTasksController vtc;
 				n.addButton("Teams", tb);
 				n.addButton("Calendar", tb);
 				n.addButton("Tasks", tb);
-				vtc.getPane().setCenter(getTableWithData(vtc.getTasks()));
+				dtc.getPane().setCenter(getTableWithData(dtc.getTasks()));
 				
 			}else if( Session.getRole().equals("student") ){
 				
@@ -62,14 +65,15 @@ private ViewTasksController vtc;
 				n.addButton("Teams", tb);
 				n.addButton("Calendar", tb);
 				n.addButton("Tasks", tb);
-				vtc.getPane().setCenter(getTableWithData(vtc.getTasks()));
-				
+				dtc.getPane().setCenter(getTableWithData(dtc.getTasks()));
+
 			}else if( Session.getRole().equals("teacher")) {
 				
 				n.addButton("Logout", tb);
 				n.addButton("Teams", tb);
 				n.addButton("Calendar", tb);
 				n.addButton("Tasks", tb);
+				dtc.getPane().setCenter(getTableWithData(dtc.getTasks()));
 			}
 			
 			
@@ -117,13 +121,55 @@ private ViewTasksController vtc;
 		TableColumn studentColumn=new TableColumn<Task,String>("Student");
 		studentColumn.setCellValueFactory(new PropertyValueFactory<Task,String>("student"));
 		
+		TableColumn deleteColumn=new TableColumn<>("Delete Patient");
+		
+		Callback<TableColumn<Task,String>, TableCell<Task,String>> cellFactory =new 
+				Callback<TableColumn<Task,String>,TableCell<Task,String>>(){
+	           @Override
+	            public TableCell call(final TableColumn<Task, String> param) {
+	                final TableCell<Task, String> cell = new TableCell<Task, String>() {
+
+	                    private final Button btn = new Button("Delete");
+
+	                    @Override
+	                    public void updateItem(String item, boolean empty) {
+	                    	super.updateItem(item, empty);
+	                    	if(empty){
+	                    		setGraphic(null);
+	                    		setText(null);
+	                    	}else {
+	                    		btn.setOnAction(event->{
+	                    			System.out.println("Delete button is clicked");
+	                    			Task p=getTableView().getItems().get(getIndex());
+	                    			
+	                    			
+	                    			dtc.deleteTask(p.getTaskId());
+	                    			new DeleteTasksView((Stage) ((Node)
+	                    					event.getSource()).getScene().getWindow());
+	                    		});
+	                    		setGraphic(btn);
+			                       setText(null);
+	                    	}
+	                    	
+	                       
+	                    }
+	                };
+	                return cell;
+					}
+			
+		};
+	
+		deleteColumn.setCellFactory(cellFactory);
+		
+		
 		table.setItems(list);
 		table.getColumns().addAll(
 				taskIdColumn,
 				titleColumn,
 				dueDateColumn,
 				descriptionColumn,
-				studentColumn);
+				studentColumn,
+				deleteColumn);
 		
 		return table;
 	}

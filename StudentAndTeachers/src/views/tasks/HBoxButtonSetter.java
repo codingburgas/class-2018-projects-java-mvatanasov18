@@ -37,7 +37,7 @@ public class HBoxButtonSetter {
 				@Override
 				public void handle(Event event) {
 					System.out.println("Delete task");
-					//new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
+					new DeleteTasksView((Stage) ((Node) event.getSource()).getScene().getWindow());
 				}
 
 			};

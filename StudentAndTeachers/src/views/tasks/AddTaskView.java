@@ -45,7 +45,7 @@ private AddTaskController atc;
 				n.addButton("Add", tb);
 				n.addButton("Teams", tb);
 				n.addButton("Calendar", tb);
-				
+				n.addButton("Tasks", tb);
 
 				
 			}else if( Session.getRole().equals("student") ){
@@ -53,13 +53,14 @@ private AddTaskController atc;
 				n.addButton("Logout", tb);
 				n.addButton("Teams", tb);
 				n.addButton("Calendar", tb);
+				n.addButton("Tasks", tb);
 
 			}else if( Session.getRole().equals("teacher")) {
 				
 				n.addButton("Logout", tb);
 				n.addButton("Teams", tb);
 				n.addButton("Calendar", tb);
-				
+				n.addButton("Tasks", tb);
 			}
 			
 			

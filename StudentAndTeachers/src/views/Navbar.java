@@ -99,12 +99,12 @@ public class Navbar {
 
 				};
 			}
-			else if (name.equalsIgnoreCase("View tasks")) {
+			else if (name.equalsIgnoreCase("Tasks")) {
 				return new EventHandler() {
 
 					@Override
 					public void handle(Event event) {
-						System.out.println("view tasks");
+						System.out.println("tasks");
 						new TasksView((Stage) ((Node) event.getSource()).getScene().getWindow());
 					}
 

@@ -32,7 +32,7 @@ public class AddView extends Navbar {
 
 				n.addButton("Logout", tb);
 				n.addButton("Teams", tb);
-				n.addButton("View Tasks", tb);
+				n.addButton("Tasks", tb);
 				n.addButton("Calendar", tb);
 			}
 			stage.setTitle("Students and Teachers");

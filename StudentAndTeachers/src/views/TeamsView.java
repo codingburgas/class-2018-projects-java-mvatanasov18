@@ -31,12 +31,12 @@ private TeamsController tc;
 				
 				n.addButton("Logout", tb);
 				n.addButton("Add", tb);
-				n.addButton("View Tasks", tb);
+				n.addButton("Tasks", tb);
 				n.addButton("Calendar", tb);
 			}else if( Session.getRole().equals("student") || Session.getRole().equals("teacher")) {
 				
 				n.addButton("Logout", tb);
-				n.addButton("View Tasks", tb);
+				n.addButton("Tasks", tb);
 				n.addButton("Calendar", tb);
 			}
 			

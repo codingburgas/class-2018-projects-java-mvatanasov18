@@ -32,12 +32,12 @@ private CalendarController cc;
 				n.addButton("Logout", tb);
 				n.addButton("Add", tb);
 				n.addButton("Teams", tb);
-				n.addButton("View Tasks", tb);
+				n.addButton("Tasks", tb);
 			}else if( Session.getRole().equals("student") || Session.getRole().equals("teacher")) {
 				
 				n.addButton("Logout", tb);
 				n.addButton("Teams", tb);
-				n.addButton("View Tasks", tb);
+				n.addButton("Tasks", tb);
 			}
 			
 			stage.setTitle("Students and Teachers");

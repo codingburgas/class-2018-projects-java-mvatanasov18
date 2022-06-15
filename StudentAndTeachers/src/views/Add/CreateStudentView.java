@@ -32,7 +32,7 @@ public class CreateStudentView extends Navbar {
 			n.addButton("Logout", tb);
 			n.addButton("Add", tb);
 			n.addButton("Teams", tb);
-			n.addButton("View Tasks", tb);
+			n.addButton("Tasks", tb);
 			n.addButton("Calendar", tb);
 			if (!Session.getUserName().equals("")) {
 				csc.getBlock().setText("Added a user with name: " + Session.getUserName());
