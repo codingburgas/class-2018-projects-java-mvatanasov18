@@ -20,6 +20,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import models.Student;
 import models.tasks.AddTaskModel;
+import models.tasks.DeleteTasksModel;
 import models.tasks.Task;
 import models.tasks.ViewTasksModel;
 
@@ -44,6 +45,6 @@ public class DeleteTasksController  {
 	}
 
 	public int deleteTask(int taskId) {
-		return new ViewTasksModel().deleteTaskById(taskId);
+		return new DeleteTasksModel().deleteTaskById(taskId);
 	}
 }
