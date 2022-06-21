@@ -211,6 +211,46 @@ public class Query {
 
 		return null;
 	}
+	
+	
+	public static Map<Integer, Task> getTasksByUsername() {
+		try {
+			String query = "SELECT "
+					+ "[Tasks].[taskId] "
+					+ ",[Tasks].[teacherId] "
+					+ ",[Tasks].[dueDate] "
+					+ ",[Tasks].[description] "
+					+ ",[Tasks].[title]  "
+					+ ",Principals.[principalId] "
+					+ ",Users.username "
+					+ ",Students.studentId "
+					+ "FROM "
+					+ "[StudentsAndTeachers].[dbo].[Tasks] "
+					+ "INNER JOIN Principals ON Principals.principalId=Tasks.principalId "
+					+ "Inner Join Students ON Tasks.studentId=Students.studentId "
+					+ "Inner join Users ON Users.userId=Students.userId AND Users.username=?";
+			System.out.println(query);
+			ConnectionModel model = new ConnectionModel();
+			PreparedStatement ps = model.createPrepareStatement(query);
+			ps.setNString(1, Session.getUserName());
+			Map<Integer, Task> tasks = new HashMap<>();
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+
+				Task t = new Task(rs.getDate("dueDate"), rs.getNString("title"), rs.getString("description"),
+						getStudentByStudentId(rs.getInt("studentId")));
+				t.setTaskId(rs.getInt("taskId"));
+				tasks.put(rs.getInt("taskId"), t);
+			}
+			return tasks;
+
+		} catch (Exception e) {
+			System.out.println("Error when retrieving tasks");
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 
 	public static Student getStudentByStudentId(int studentId) {
 		try {
