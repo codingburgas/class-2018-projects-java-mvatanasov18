@@ -26,10 +26,12 @@ import javafx.stage.Stage;
 import models.Student;
 import models.tasks.AddTaskModel;
 import models.tasks.Task;
+import models.tasks.UpdateTaskModel;
 import views.tasks.AddTaskView;
+import views.tasks.UpdateTaskView;
 
 
-public class AddTaskController implements Initializable {
+public class UpdateTaskController implements Initializable {
 
 	
 	@FXML
@@ -39,6 +41,8 @@ public class AddTaskController implements Initializable {
 	@FXML
 	private TextField title;
 	@FXML
+	private TextField taskId;
+	@FXML
 	private ListView<Student> listStudents;
 	@FXML
 	private TextArea description;
@@ -47,7 +51,7 @@ public class AddTaskController implements Initializable {
 	private List<Student> students;
 	private Student currentStudent;
 	
-	public AddTaskController() {
+	public UpdateTaskController() {
 		students=new AddTaskModel().getStudents();
 	}
 	
@@ -85,19 +89,20 @@ public class AddTaskController implements Initializable {
 	public void submit(ActionEvent event)  {
 		try {
 		LocalDate chosenDate=dueDate.getValue();
-
-		String temp=new AddTaskModel()
-		.addTask(new Task(
-				java.sql.Date.valueOf(chosenDate),
-				title.getText().toString(),
-				description.getText().toString(),
-				currentStudent
-				));
-		if(temp.equals("Success")) {
-		new AddTaskView((Stage) ((Node) event.getSource()).getScene().getWindow());
+Task t=new Task(
+		java.sql.Date.valueOf(chosenDate),
+		title.getText().toString(),
+		description.getText().toString(),
+		currentStudent
+		);
+	t.setTaskId(Integer.parseInt( taskId.getText().toString()));
+		String message=new UpdateTaskModel().updateTask(t);
+		if(message.equals("Error")) {
+			errorMessage.setText("Invadid data");
 		}else {
-			errorMessage.setText("Invalid data");
+			new UpdateTaskView((Stage) ((Node) event.getSource()).getScene().getWindow());
 		}
+		
 		}catch(DateTimeParseException dtpe) {
 			errorMessage.setText("Invalid date format. Please click the calendar icon");
 		}

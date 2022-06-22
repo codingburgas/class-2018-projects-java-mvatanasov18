@@ -29,7 +29,7 @@ public class LoginModel {
 				System.out.println("Login was successful");
 				int id=Query.getUserIdFromUsername(username);
 				Session.setSchoolName(Query.getSchoolNameByUsername(username));
-				 Session.setUserName(username);
+				// Session.setUserName(username);
 				return new String[]{seeRole(id),Query.getNameById(id)};
 			}
 		}

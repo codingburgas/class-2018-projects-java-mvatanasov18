@@ -232,7 +232,7 @@ public class Query {
 			System.out.println(query);
 			ConnectionModel model = new ConnectionModel();
 			PreparedStatement ps = model.createPrepareStatement(query);
-			ps.setNString(1, Session.getUserName());
+			ps.setNString(1, Session.getUsername());
 			Map<Integer, Task> tasks = new HashMap<>();
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -252,6 +252,26 @@ public class Query {
 		return null;
 	}
 
+	public static int checkTitle(String title) {
+		try {
+			
+			String query="EXEC checkTitle @title=? , @schoolName=?";
+			ConnectionModel model=new ConnectionModel();
+			PreparedStatement ps=model.createPrepareStatement(query);
+			ps.setString(1, Session.getSchoolName());
+			ps.setString(2, title);
+			ResultSet rs=ps.executeQuery();
+			int temp=0;
+			while(rs.next()) {
+				temp=rs.getInt("result");
+			}
+			return temp;
+			
+		}catch(Exception e) {
+			return 0;
+		}
+	}
+	
 	public static Student getStudentByStudentId(int studentId) {
 		try {
 
@@ -283,7 +303,7 @@ public class Query {
 			String query="SELECT isVerified FROM Principals INNER JOIN Users ON username=? AND Users.userId=Principals.userId";
 			
 			PreparedStatement ps=model.createPrepareStatement(query);
-			ps.setString(1,Session.getUserName());
+			ps.setString(1,Session.getUsername());
 			ResultSet rs=ps.executeQuery();
 			int id=0;
 			while(rs.next()) {
@@ -295,7 +315,20 @@ public class Query {
 		}
 		return 0;
 	}
+	
+	// to do 
 
+	public static int getTaskId(int taskId) {
+		try {
+			
+			ConnectionModel model=new ConnectionModel();
+			String query="Seelct";
+			
+		}catch(Exception e) {
+			return 0;
+		}
+	}
+	
 	///////////////////// INSERT ////////////////
 	public static int insertUser(String username, String password, String firstName, String lastName, String address,
 			String phone, String schoolName) {
@@ -456,7 +489,58 @@ public class Query {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	////////////UPDATE
+	public static void updateTaskPrincipal(int studentId, Date dueDate, String description, String title,int taskId) {
+		try {
+			String query = "UPDATE Tasks SET "
+					+ " principalId=? , "
+					+ " studentId=? , "
+					+ " dueDate=? , "
+					+ " description=? ,"
+					+ " title=? "
+					+ " WHERE taskId=?";
 
+			ConnectionModel model = new ConnectionModel();
+			
+			PreparedStatement ps = model.createPrepareStatement(query);
+			ps.setInt(1, Session.getId());
+			ps.setInt(2, studentId);
+			ps.setDate(3, dueDate);
+			ps.setNString(4, description);
+			ps.setNString(5, title);
+			ps.setInt(6, taskId);
+			int rows = ps.executeUpdate();
+			System.out.println("Affected rows: " + rows);
+		} catch (Exception e) {
+			System.out.println("Error when updating task");
+			e.printStackTrace();
+		}
+	}
+	
+	public static void updateTaskTeacher(int studentId, Date dueDate, String description, String title,int taskId) {
+		try {
+			String query = "UPDATE Tasks SET  principalId=? , studentId=?  , dueDate=? , description=? ,title=?  WHERE  taskId=?";
+
+			ConnectionModel model = new ConnectionModel();
+
+			PreparedStatement ps = model.createPrepareStatement(query);
+			ps.setInt(1, Session.getId());
+			ps.setInt(2, studentId);
+			ps.setDate(3, dueDate);
+			ps.setNString(4, description);
+			ps.setNString(5, title);
+			ps.setInt(6, taskId);
+			int rows = ps.executeUpdate();
+			System.out.println("Affected rows: " + rows);
+		} catch (Exception e) {
+			System.out.println("Error when updating task");
+			e.printStackTrace();
+		}
+	}
+	
 	/////////// CHECKING ROLE
 	public static boolean isPrincipal(int id) {
 		try {

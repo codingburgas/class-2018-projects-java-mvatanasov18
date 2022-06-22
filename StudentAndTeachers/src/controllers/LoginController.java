@@ -45,6 +45,7 @@ public class LoginController {
 			Session.setLoggedIn(true);
 			Session.setName(message[1]);
 			Session.setRole(message[0]);
+			Session.setUsername(tempUsername);
 			
 			if(lm.isAuth()) {
 			

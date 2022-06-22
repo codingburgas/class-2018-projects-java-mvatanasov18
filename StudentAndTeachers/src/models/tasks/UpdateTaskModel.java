@@ -11,7 +11,7 @@ import models.Session;
 import models.Student;
 import models.db.Query;
 
-public class AddTaskModel {
+public class UpdateTaskModel {
 
 	// getters
 	public List<Student> getStudents() {
@@ -20,14 +20,14 @@ public class AddTaskModel {
 
 	// other methods
 
-	public String addTask(Task t) {
+	public String updateTask(Task t) {
 		if (checkTaskData(t)) {
 			if (Session.getRole().equalsIgnoreCase("principal")) {
-				Query.insertTaskPrincipal(t.getStudent().getStudentId(), t.getDueDate(), t.getDescription(),
-						t.getTitle());
+				Query.updateTaskPrincipal(t.getStudent().getStudentId(), t.getDueDate(), t.getDescription(),
+						t.getTitle(),t.getTaskId());
 			} else if (Session.getRole().equalsIgnoreCase("teacher")) {
-				Query.insertTaskTeacher(t.getStudent().getStudentId(), t.getDueDate(), t.getDescription(),
-						t.getTitle());
+				Query.updateTaskTeacher(t.getStudent().getStudentId(), t.getDueDate(), t.getDescription(),
+						t.getTitle(),t.getTaskId());
 			}
 			return "Success";
 		}
@@ -48,6 +48,7 @@ public class AddTaskModel {
 			return false;
 		}
 		if(Query.checkTitle(t.getTitle())==1) {
+			System.out.println("nqma takav task");
 			return false;
 		}
 		return true;

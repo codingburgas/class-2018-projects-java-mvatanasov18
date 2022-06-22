@@ -47,7 +47,7 @@ public class HBoxButtonSetter {
 				@Override
 				public void handle(Event event) {
 					System.out.println("Update task");
-					//new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
+					new UpdateTaskView((Stage) ((Node) event.getSource()).getScene().getWindow());
 				}
 
 			};
