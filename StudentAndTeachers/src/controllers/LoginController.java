@@ -10,6 +10,7 @@ import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 import models.LoginModel;
 import models.Session;
+import views.AuthView;
 import views.IndexView;
 import views.LoginView;
 import views.RegisterView;
@@ -41,16 +42,21 @@ public class LoginController {
 				message[0].equals("teacher")||
 				message[0].equals("principal")) {
 			
-			Session.setLoggedIn(false);
+			Session.setLoggedIn(true);
 			Session.setName(message[1]);
 			Session.setRole(message[0]);
+			
+			if(lm.isAuth()) {
+			
 			new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
-			System.out.println("tuk sum");
+			}else {
+				//display message that the user is not authenticated
+				new AuthView((Stage) ((Node) event.getSource()).getScene().getWindow());
+			}
 			
-			
-		}
+		}else {
 		errorMessage.setText(message[0]+message[1]);
 		
-		
+		}
 	}
 }

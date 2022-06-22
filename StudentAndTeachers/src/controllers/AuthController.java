@@ -16,27 +16,12 @@ import views.LoginView;
 import views.RegisterView;
 import views.tasks.TasksView;
 
-public class HomeController {
-	@FXML
-	private Label welcome;
+public class AuthController {
 	@FXML
 	private ToolBar navbar;
 
-	public void setText(String text) {
-		welcome.setText("Welcome "+text);
-	}
 	
 	public ToolBar getNavbar() {
 		return navbar;
 	}
-	
-	public void displayUpcomingTasks(ActionEvent event) {
-		if(Session.isLoggedIn()) {
-			new TasksView((Stage) ((Node) event.getSource()).getScene().getWindow());
-		}else {
-			new LoginView((Stage) ((Node) event.getSource()).getScene().getWindow());
-		}
-	}
-
-
 }

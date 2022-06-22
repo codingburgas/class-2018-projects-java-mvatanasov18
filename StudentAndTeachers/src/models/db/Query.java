@@ -275,6 +275,26 @@ public class Query {
 		}
 		return null;
 	}
+	
+	
+	public static int getIsVerified() {
+		try {
+			ConnectionModel model=new ConnectionModel();
+			String query="SELECT isVerified FROM Principals INNER JOIN Users ON username=? AND Users.userId=Principals.userId";
+			
+			PreparedStatement ps=model.createPrepareStatement(query);
+			ps.setString(1,Session.getUserName());
+			ResultSet rs=ps.executeQuery();
+			int id=0;
+			while(rs.next()) {
+				id=rs.getInt("isVerified");
+			}
+			return id;
+		}catch(Exception e) {
+			
+		}
+		return 0;
+	}
 
 	///////////////////// INSERT ////////////////
 	public static int insertUser(String username, String password, String firstName, String lastName, String address,

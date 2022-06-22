@@ -58,20 +58,29 @@ public class LoginModel {
 	
 	private String seeRole(int id) {
 		if(Query.isPrincipal(id)) {
-			System.out.println("principal");
+			
 			
 			return "principal";
 		}
 		else if(Query.isStudent(id)) {
-			System.out.println("student");
+			
 			return "student";
 		}
 		else if(Query.isTeacher(id)) {
-			System.out.println("teacher");
+			
 			return "teacher";
 		}
 		
 		return "";
+	}
+	
+	public boolean isAuth() {
+		
+		if(Query.getIsVerified()!=0) {
+			return true;
+		}
+		
+		return false;
 	}
 	
 }
