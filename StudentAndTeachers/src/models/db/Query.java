@@ -202,6 +202,7 @@ public class Query {
 				t.setTaskId(rs.getInt("taskId"));
 				tasks.put(rs.getInt("taskId"), t);
 			}
+			model.closeConnection();
 			return tasks;
 
 		} catch (Exception e) {
@@ -242,6 +243,7 @@ public class Query {
 				t.setTaskId(rs.getInt("taskId"));
 				tasks.put(rs.getInt("taskId"), t);
 			}
+			model.closeConnection();
 			return tasks;
 
 		} catch (Exception e) {
@@ -265,6 +267,7 @@ public class Query {
 			while(rs.next()) {
 				temp=rs.getInt("result");
 			}
+			model.closeConnection();
 			return temp;
 			
 		}catch(Exception e) {
@@ -283,12 +286,13 @@ public class Query {
 			ps.setInt(1, studentId);
 
 			ResultSet rs = ps.executeQuery();
-
+			Student s=null;
 			while (rs.next()) {
-				return new Student(rs.getInt("studentId"), rs.getString("firstName"), rs.getString("lastName"),
+				s=new Student(rs.getInt("studentId"), rs.getString("firstName"), rs.getString("lastName"),
 						rs.getString("username"));
 			}
-
+			model.closeConnection();
+			return s;
 		} catch (Exception e) {
 			System.out.println("Error when retrieving data from Students id= " + studentId);
 			e.printStackTrace();
@@ -309,6 +313,7 @@ public class Query {
 			while(rs.next()) {
 				id=rs.getInt("isVerified");
 			}
+			model.closeConnection();
 			return id;
 		}catch(Exception e) {
 			
@@ -316,13 +321,21 @@ public class Query {
 		return 0;
 	}
 	
-	// to do 
 
 	public static int getTaskId(int taskId) {
 		try {
 			
 			ConnectionModel model=new ConnectionModel();
-			String query="Seelct";
+			String query="SELECT taskId FROM Tasks WHERE taskId=?";
+			PreparedStatement ps=model.createPrepareStatement(query);
+			ps.setInt(1, taskId);
+			ResultSet rs=ps.executeQuery();
+			int id=0;
+			while(rs.next()) {
+				id=rs.getInt("taskId");
+			}
+			model.closeConnection();
+			return id;
 			
 		}catch(Exception e) {
 			return 0;
@@ -462,6 +475,7 @@ public class Query {
 
 			int rows = ps.executeUpdate();
 			System.out.println("Affected rows: " + rows);
+			model.closeConnection();
 		} catch (Exception e) {
 			System.out.println("Error when inserting task");
 			e.printStackTrace();
@@ -484,6 +498,7 @@ public class Query {
 
 			int rows = ps.executeUpdate();
 			System.out.println("Affected rows: " + rows);
+			model.closeConnection();
 		} catch (Exception e) {
 			System.out.println("Error when inserting task");
 			e.printStackTrace();
@@ -514,6 +529,7 @@ public class Query {
 			ps.setInt(6, taskId);
 			int rows = ps.executeUpdate();
 			System.out.println("Affected rows: " + rows);
+			model.closeConnection();
 		} catch (Exception e) {
 			System.out.println("Error when updating task");
 			e.printStackTrace();
@@ -535,6 +551,7 @@ public class Query {
 			ps.setInt(6, taskId);
 			int rows = ps.executeUpdate();
 			System.out.println("Affected rows: " + rows);
+			model.closeConnection();
 		} catch (Exception e) {
 			System.out.println("Error when updating task");
 			e.printStackTrace();
