@@ -47,9 +47,6 @@ public class AddTaskModel {
 		if(areBlank(t.getTitle())) {
 			return false;
 		}
-		if(Query.checkTitle(t.getTitle())==1) {
-			return false;
-		}
 		return true;
 	}
 

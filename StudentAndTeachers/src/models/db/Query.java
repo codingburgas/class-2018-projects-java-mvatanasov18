@@ -254,14 +254,14 @@ public class Query {
 		return null;
 	}
 
-	public static int checkTitle(String title) {
+	public static int checkTaskId(int taskId) {
 		try {
 			
-			String query="EXEC checkTitle @title=? , @schoolName=?";
+			String query="EXEC checkTaskId @taskId=? , @schoolName=?";
 			ConnectionModel model=new ConnectionModel();
 			PreparedStatement ps=model.createPrepareStatement(query);
-			ps.setString(1, Session.getSchoolName());
-			ps.setString(2, title);
+			ps.setInt(1,taskId );
+			ps.setString(2, Session.getSchoolName());
 			ResultSet rs=ps.executeQuery();
 			int temp=0;
 			while(rs.next()) {

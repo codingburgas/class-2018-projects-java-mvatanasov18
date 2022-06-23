@@ -47,8 +47,11 @@ public class UpdateTaskModel {
 		if(areBlank(t.getTitle())) {
 			return false;
 		}
-		if(Query.checkTitle(t.getTitle())==1) {
-			System.out.println("nqma takav task");
+		if(Query.getTaskId(t.getTaskId())==0) {
+			return false;
+		}
+		if(Query.checkTaskId(t.getTaskId())==0) {
+			System.out.println("vurnah 0");
 			return false;
 		}
 		return true;
