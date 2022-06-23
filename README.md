@@ -3,3 +3,6 @@
 This is the repository for your final projects. You'll use then till 12th grade.
 
 Please, do not add anything. **Wait for furture instructions**.
+
+
+Link to [documentation](https://codingburgas.sharepoint.com/:w:/s/2122-2-362/Ecw6p6g9QtZMqs66ch3zvr4BIUKmrdhsR6jBYOJQS2bV8A?e=wYlYBC)
