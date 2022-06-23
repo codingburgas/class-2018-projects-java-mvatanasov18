@@ -30,7 +30,7 @@ public class LoginModel {
 				int id=Query.getUserIdFromUsername(username);
 				Session.setSchoolName(Query.getSchoolNameByUsername(username));
 				// Session.setUserName(username);
-				return new String[]{seeRole(id),Query.getNameById(id)};
+				return new String[]{getRole(id),Query.getNameById(id)};
 			}
 		}
 		
@@ -56,7 +56,7 @@ public class LoginModel {
 		return false;
 	}
 	
-	private String seeRole(int id) {
+	private String getRole(int id) {
 		if(Query.isPrincipal(id)) {
 			
 			

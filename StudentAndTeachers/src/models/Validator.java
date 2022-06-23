@@ -30,17 +30,16 @@ public class Validator {
 	
 	
 	
-	// true- password's length is at least 8 chars and equals confirmPassword
-	// false password's length smaller than 8 chars or not equals confirmPassword
+	
 	public boolean isPasswordOk(String password,String confirmPassword) {
 
-		if (password.length() >= 8) {
-			if (password.equals(confirmPassword)) {
-				return true;
-			}
-		}
 
-		return false;
+			String PASSWORD_PATTERN =
+		            "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+			Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+			Matcher matcherP = pattern.matcher(password);
+			Matcher matcherC = pattern.matcher(confirmPassword);
+			return password.equals(confirmPassword) && matcherP.matches() && matcherC.matches();
 	}
 
 	

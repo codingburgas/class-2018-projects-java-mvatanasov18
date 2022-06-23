@@ -46,7 +46,7 @@ public class LoginController {
 			Session.setName(message[1]);
 			Session.setRole(message[0]);
 			Session.setUsername(tempUsername);
-			
+			if(message[0].equals("principal")) {
 			if(lm.isAuth()) {
 			
 			new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
@@ -54,7 +54,9 @@ public class LoginController {
 				//display message that the user is not authenticated
 				new AuthView((Stage) ((Node) event.getSource()).getScene().getWindow());
 			}
-			
+			}else {
+				new IndexView((Stage) ((Node) event.getSource()).getScene().getWindow());
+			}
 		}else {
 		errorMessage.setText(message[0]+message[1]);
 		

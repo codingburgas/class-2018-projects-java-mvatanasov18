@@ -230,7 +230,6 @@ public class Query {
 					+ "INNER JOIN Principals ON Principals.principalId=Tasks.principalId "
 					+ "Inner Join Students ON Tasks.studentId=Students.studentId "
 					+ "Inner join Users ON Users.userId=Students.userId AND Users.username=?";
-			System.out.println(query);
 			ConnectionModel model = new ConnectionModel();
 			PreparedStatement ps = model.createPrepareStatement(query);
 			ps.setNString(1, Session.getUsername());
